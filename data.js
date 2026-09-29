@@ -53,22 +53,26 @@ window.SITE = {
       date: "Jan 2026 – Present",
       icon: "gonio",
       tags: [
+        "Closed-Loop Control",
+        "Adaptive Jacobian",
         "Motion Control",
         "Embedded C++ (Arduino)",
         "Stepper Motors",
         "DRV8825",
-        "Microstepping",
         "Coupled Kinematics",
         "SCPI",
         "EEPROM",
-        "Hall Sensors",
-        "Analog Signal Conditioning",
+        "3-Axis Hall Sensors",
+        "Op-Amp Signal Conditioning",
         "PCB Design",
+        "Helmholtz Coils",
+        "MATLAB",
+        "Sensor Calibration",
         "Acceptance Testing"
       ],
-      summary: "Two-axis motion control for rotating graphene samples inside a dilution refrigerator, built as a capstone and now continuing in the Henriksen Lab.",
+      summary: "Two-axis motion control with closed-loop Hall-sensor feedback, for rotating graphene samples inside a dilution refrigerator.",
       problem: "Rotate a graphene sample to any angle in a strong magnetic field, at millikelvin temperatures, without adding heat or twisting its wiring.",
-      role: "Software & systems integration lead on a 3-person team. I owned the firmware and kinematics, integrated the prototype, and did most of the Hall-sensor PCB. I'm continuing it in the Henriksen Lab.",
+      role: "Software & systems integration lead. I own the firmware, kinematics, and closed loop, and designed the Hall-amp PCB. Capstone (3-person team) → summer 2026 research with Maddie Cope.",
       highlights: [
         {
           value: "±1°",
@@ -79,12 +83,12 @@ window.SITE = {
           label: "Full rotation on both axes"
         },
         {
-          value: "0.06°",
-          label: "Theoretical resolution (1/32 microstep)"
+          value: "1000×",
+          label: "Hall-signal gain, per axis"
         },
         {
-          value: "±180°",
-          label: "Firmware limits protecting sample wiring"
+          value: "2° / 4°",
+          label: "θ / φ closed-loop tolerance, Hall-verified"
         }
       ],
       media: [
@@ -121,13 +125,19 @@ window.SITE = {
         },
         {
           type: "image",
+          src: "assets/img/gonio-hall-amp-two-stage.png",
+          caption: "Two-stage Hall amplifier: difference amp (1000× gain) into a tunable offset summing stage, one per axis"
+        },
+        {
+          type: "image",
           src: "assets/img/gonio-cryo-model.jpg",
           caption: "Half-size, gold-plated goniometer built for the dilution refrigerator"
         },
         {
           type: "image",
           src: "assets/img/gonio-belt-upgrade.jpg",
-          caption: "Prototype revision: Kevlar strings and springs replaced with bearings and belts to stop slippage"
+          caption: "Prototype revision: Kevlar strings and springs replaced with bearings and belts to stop slippage",
+          more: true
         },
         {
           type: "image",
@@ -144,7 +154,7 @@ window.SITE = {
         {
           type: "image",
           src: "assets/img/gonio-diff-amp-schematic.png",
-          caption: "Differential amplifier for conditioning Hall-sensor signals",
+          caption: "Capstone-era differential amplifier (simulation)",
           more: true
         },
         {
@@ -175,9 +185,9 @@ window.SITE = {
       tier: "featured",
       cardTags: [
         "Motion Control",
+        "Closed-Loop Control",
         "Embedded C++",
-        "PCB Design",
-        "Hall Sensors"
+        "Analog PCB Design"
       ],
       system: [
         [
@@ -189,34 +199,38 @@ window.SITE = {
           "2 steppers · DRV8825 · 1/32 microstepping"
         ],
         [
-          "Control",
-          "Arduino C++ · SCPI serial · GUI"
+          "Sensing",
+          "3-axis HE244 Hall sensors · 1000× two-stage amp"
         ],
         [
-          "Sensing",
-          "Limit switches · 3-axis Hall sensor + diff amp"
+          "Control",
+          "Arduino C++ · SCPI · adaptive Jacobian closed loop"
+        ],
+        [
+          "Test field",
+          "Helmholtz coils for a uniform field"
         ]
       ],
       implementation: [
         [
           "Coupled kinematics:",
-          "motor ↔ sample angle relations through the gearbox."
+          "α = ψ, β = ψ + ω through the gearbox."
         ],
         [
-          "Skip-step motion:",
-          "both axes start and stop together."
+          "Closed-loop orientation:",
+          "Hall field vector → θ/φ → inverse-Jacobian correction, verified after every move."
+        ],
+        [
+          "Adaptive Jacobian:",
+          "learns from good moves, rolls back bad ones, saves to EEPROM."
+        ],
+        [
+          "Hall signal chain:",
+          "difference amp + offset stage per axis, on my PCB."
         ],
         [
           "Firmware:",
-          "accel ramps, homing, ±180° limits, EEPROM recovery."
-        ],
-        [
-          "SCPI:",
-          "lab-instrument commands (MOVE:ABS, HOME, *IDN?)."
-        ],
-        [
-          "Hall Amp V2 PCB:",
-          "differential amp for orientation feedback."
+          "coordinated moves, accel ramps, homing, SCPI, power-loss recovery."
         ]
       ],
       iteration: [
@@ -227,21 +241,28 @@ window.SITE = {
           result: "±1° repeatable, no drift"
         },
         {
-          issue: "Two-phase moves were slow",
-          cause: "Axis coupling not yet modeled",
-          fix: "Derived kinematics; skip-step algorithm",
-          result: "One near-direct move"
+          issue: "Hall PCB V1 saturated at the ±5 V rails",
+          cause: "Single-5 V-supply redesign",
+          fix: "V2: ±10 V rails, 1 MΩ gain",
+          result: "Clean, higher-resolution signal"
         },
         {
-          issue: "Hall signal too small and noisy",
-          cause: "Output near the MCU noise floor",
-          fix: "Diff amp → Hall Amp V2 PCB",
-          result: "Ready for closed-loop sensing"
+          issue: "Sweep errors up to ±30–40°",
+          cause: "Non-uniform field, sensor tilt, 2× Y-gain mismatch",
+          fix: "Helmholtz coils, matched gains, tilt correction",
+          result: "Consistent 3-axis readings"
+        },
+        {
+          issue: "Fixed model couldn't steer everywhere",
+          cause: "φ undefined near poles; response varies",
+          fix: "Adaptive Jacobian + φ-sweep recovery",
+          result: "Hall-verified θ 2° / φ 4°"
         }
       ],
       results: [
-        "Passed all acceptance tests: 360° on both axes, ±1° repeatability, stable long runs.",
-        "A half-size, gold-plated version is built for the fridge; integration is in progress."
+        "Passed acceptance: 360° both axes, ±1° repeatable, stable long runs.",
+        "Closed loop drives to a Hall-measured θ / φ target and verifies it.",
+        "Next: the gold-plated stage for the dilution fridge."
       ]
     },
     {
@@ -863,9 +884,9 @@ window.SITE = {
       org: "Henriksen Lab, Washington University in St. Louis",
       date: "May 2026 – Present",
       bullets: [
-        "Continuing capstone development of a motorized two-axis goniometer for graphene experiments.",
-        "Refining motion-control software and user interface for angular positioning, calibration, and safety constraints.",
-        "Evaluating cryogenic compatibility, mechanical stability, thermal load, and wiring strain for real-world integration."
+        "Continuing development of a motorized two-axis goniometer for graphene experiments.",
+        "Built closed-loop orientation control from 3-axis Hall-sensor feedback (adaptive Jacobian, Hall-verified moves).",
+        "Calibrating against a Helmholtz-coil field and evaluating cryogenic compatibility, thermal load, and wiring strain."
       ]
     },
     {
