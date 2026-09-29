@@ -32,8 +32,9 @@
 .stat-link,
 .group-label,
 .kr-label,
-.iter-n,
-.iter dt,
+.spec dt,
+.iter-table th,
+.iter-table td::before,
 .table-note,
 .pp-more summary,
 .hero-focus,
@@ -84,5 +85,4 @@ main { counter-reset: sec; }
   counter-increment: pp; content: counter(pp, decimal-leading-zero) " /";
   font-family: var(--mono); font-size: 12.5px; font-weight: 500; color: var(--accent); letter-spacing: 0; margin-right: 12px; vertical-align: 3px;
 }
-.iter { border-radius: 8px; }
-.iter-n { font-family: var(--mono); }
+.iter-wrap { border-radius: 8px; }

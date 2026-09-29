@@ -6,7 +6,8 @@
                     "featured" (large card), "selected" (grid), "additional" (small row).
                   cardTags: 3–5 tags for the homepage card; tags: full list on the project page.
                   problem / role: short paragraphs.
-                  system, implementation: bullets; [lead, detail] renders a bold lead-in.
+                  system: [label, value] rows shown as a spec list.
+                  implementation: bullets; [lead, detail] renders a bold lead-in.
                   iteration: [{ issue, cause, fix, result }] shown under "Test & Iteration".
                   results + table: shown under "Results"; highlights: key-result tiles.
    media[]        First item is the cover. Types: image | video | youtube.
@@ -66,8 +67,8 @@ window.SITE = {
         "Acceptance Testing"
       ],
       summary: "Two-axis motion control for rotating graphene samples inside a dilution refrigerator, built as a capstone and now continuing in the Henriksen Lab.",
-      problem: "Rotating graphene in a strong magnetic field reveals how its electrons respond to field direction. The rotation has to happen at millikelvin temperatures, in vacuum, without adding heat or twisting the sample wiring.",
-      role: "Software & systems integration lead on a 3-person team. I owned the firmware and kinematics, integrated the full prototype, and did most of the Hall-sensor PCB design. I'm continuing it in the Henriksen Lab toward fridge installation.",
+      problem: "Rotate a graphene sample to any angle in a strong magnetic field, at millikelvin temperatures, without adding heat or twisting its wiring.",
+      role: "Software & systems integration lead on a 3-person team. I owned the firmware and kinematics, integrated the prototype, and did most of the Hall-sensor PCB. I'm continuing it in the Henriksen Lab.",
       highlights: [
         {
           value: "±1°",
@@ -180,68 +181,67 @@ window.SITE = {
       ],
       system: [
         [
-          "Mechanical:",
-          "aluminum strut frame, 3D-printed motor housings, belt drive, and a bevel-gear two-axis stage (2× scale prototype)."
+          "Mechanical",
+          "Strut frame, belt drive, bevel-gear 2-axis stage"
         ],
         [
-          "Actuation:",
-          "two stepper motors on DRV8825 drivers with 1/32 microstepping."
+          "Actuation",
+          "2 steppers · DRV8825 · 1/32 microstepping"
         ],
         [
-          "Control:",
-          "Arduino firmware with a SCPI serial interface and an orientation GUI."
+          "Control",
+          "Arduino C++ · SCPI serial · GUI"
         ],
         [
-          "Sensing:",
-          "limit switches for homing, plus a 3-axis Hall sensor through a differential amplifier for closed-loop orientation."
+          "Sensing",
+          "Limit switches · 3-axis Hall sensor + diff amp"
         ]
       ],
       implementation: [
         [
-          "Coupled kinematics.",
-          "The gearbox links the two axes, so I derived the motor-to-sample angle relations instead of driving them independently."
+          "Coupled kinematics:",
+          "motor ↔ sample angle relations through the gearbox."
         ],
         [
-          "Skip-step motion.",
-          "Both motors start and stop together along a near-direct path, replacing a slower two-phase move."
+          "Skip-step motion:",
+          "both axes start and stop together."
         ],
         [
-          "Firmware.",
-          "Arduino C++ with acceleration ramps, limit-switch homing, ±180° limits, and EEPROM position recovery after power loss."
+          "Firmware:",
+          "accel ramps, homing, ±180° limits, EEPROM recovery."
         ],
         [
-          "SCPI interface.",
-          "Lab-instrument-style commands (*IDN?, MOVE:ABS, HOME, CONF:ORIENTMODE…) with sample- and field-referenced modes."
+          "SCPI:",
+          "lab-instrument commands (MOVE:ABS, HOME, *IDN?)."
         ],
         [
-          "Hall Amp V2 PCB.",
-          "Did most of the design of a differential-amplifier board that conditions 3-axis Hall-sensor signals."
+          "Hall Amp V2 PCB:",
+          "differential amp for orientation feedback."
         ]
       ],
       iteration: [
         {
-          issue: "Commanded moves didn't reliably produce the matching stage rotation.",
-          cause: "The Kevlar strings and springs couldn't hold tension, so they slipped on the axles. That made mechanical error indistinguishable from firmware error.",
-          fix: "Replaced the strings with ball bearings and belts.",
-          result: "Motion transferred reliably and the firmware could be verified on its own, which led to ±1° repeatability and no noticeable drift over long runs."
+          issue: "Stage didn't follow commanded moves",
+          cause: "Kevlar strings slipping on axles",
+          fix: "Switched to bearings + belts",
+          result: "±1° repeatable, no drift"
         },
         {
-          issue: "Early moves ran in two phases (Ψ, then ω), which was slow at cryogenic-safe speeds.",
-          cause: "The coupling between the two axes wasn't modeled yet, so the motion had to be split to isolate each axis.",
-          fix: "Derived the coupled kinematics and wrote the single-phase skip-step algorithm.",
-          result: "Both axes now move together along a near-direct path, with smoother and shorter motion."
+          issue: "Two-phase moves were slow",
+          cause: "Axis coupling not yet modeled",
+          fix: "Derived kinematics; skip-step algorithm",
+          result: "One near-direct move"
         },
         {
-          issue: "Raw Hall-sensor readings were too small and noisy to resolve orientation.",
-          cause: "Low-amplitude differential sensor output sat close to the microcontroller's noise.",
-          fix: "Added a differential amplifier, bench-tested it with series resistors simulating the sensor terminals, and moved it onto the Hall Amp V2 PCB.",
-          result: "The signal chain is in place for closed-loop orientation sensing, which is the next milestone in the Henriksen Lab."
+          issue: "Hall signal too small and noisy",
+          cause: "Output near the MCU noise floor",
+          fix: "Diff amp → Hall Amp V2 PCB",
+          result: "Ready for closed-loop sensing"
         }
       ],
       results: [
-        "Met all three acceptance criteria: full 360° rotation on both axes, repeatable positioning within ±1°, and stable long-duration operation.",
-        "Sub-degree resolution with 1/32 microstepping, and ±180° limits that keep the sample wiring intact.",
-        "A half-size, gold-plated goniometer has been built for the fridge. I'm evaluating thermal load, wiring strain, and mechanical stability for installation."
+        "Passed all acceptance tests: 360° on both axes, ±1° repeatability, stable long runs.",
+        "A half-size, gold-plated version is built for the fridge; integration is in progress."
       ]
     },
     {
@@ -264,8 +264,8 @@ window.SITE = {
         "Failure Analysis"
       ],
       summary: "Designed, fabricated, simulated, and tested silicon p–n photodiodes in a Class 100/1000 cleanroom.",
-      problem: "Take a bare silicon wafer to a working photodiode, and predict and measure how well it turns light into current.",
-      role: "Individual lab project (ESE 4361). I ran the process flow and runsheets, built the TCAD model, tested the devices, and wrote the report.",
+      problem: "Take a bare silicon wafer to a working photodiode, then measure how well it converts light to current.",
+      role: "Solo lab project (ESE 4361): process flow and runsheets, TCAD model, device testing, and the report.",
       highlights: [
         {
           value: "285 nm",
@@ -331,58 +331,57 @@ window.SITE = {
       ],
       system: [
         [
-          "Device:",
-          "silicon p–n photodiode with a boron-implanted p region, oxide isolation, and aluminum contacts."
+          "Device",
+          "Si p–n junction · boron-implanted p region · Al contacts"
         ],
         [
-          "Process:",
-          "thermal oxidation → lithography → RIE → boron implant (off-site) → anneal → contact opening → aluminum."
+          "Process",
+          "Oxidation → litho → RIE → implant → anneal → metal"
         ],
         [
-          "Simulation:",
-          "Sentaurus SProcess for structure and doping, SDevice for dark I–V."
+          "Simulation",
+          "Sentaurus SProcess + SDevice"
         ],
         [
-          "Test setup:",
-          "probe station with a Keysight B1500A SMU; calibrated reference photodiode and Thorlabs PM100D2 for optical power."
+          "Test",
+          "Probe station · Keysight B1500A · Thorlabs PM100D2"
         ]
       ],
       implementation: [
         [
-          "Process flow.",
-          "Ran the cleanroom steps with industry-style wafer runsheets and a digital lab notebook."
+          "Cleanroom process:",
+          "ran each step with wafer runsheets."
         ],
         [
-          "Thermal oxide.",
-          "10 h dry oxidation at 1100 °C, verified by ellipsometry."
+          "Thermal oxide:",
+          "10 h dry oxidation at 1100 °C."
         ],
         [
-          "TCAD model.",
-          "Simulated the full process and compared 10 / 100 / 1000 keV implants (junction depth 2.14–3.61 µm)."
+          "TCAD:",
+          "compared 10 / 100 / 1000 keV implants."
         ],
         [
-          "Cost model.",
-          "Built from tool rates and the runsheet: ≈ $2,055 per wafer."
+          "Cost model:",
+          "≈ $2,055 per wafer, $4.11 per diode."
         ]
       ],
       iteration: [
         {
-          issue: "The oxide was completely etched away during RIE, leaving bare silicon.",
-          cause: "The photoresist mask failed, most likely weak adhesion from an uneven or insufficient hard bake, made worse by etch time and plasma conditions.",
-          fix: "Specified tighter hard-bake, descum, and RIE-time control for the next run.",
-          result: "The wafer couldn't be finished within the semester, so I completed electrical and optical testing on comparison devices."
+          issue: "Oxide fully etched away in RIE",
+          cause: "Photoresist adhesion / weak hard bake",
+          fix: "Tighter bake, descum, etch-time control",
+          result: "Finished testing on comparison dies"
         },
         {
-          issue: "Measured devices had low responsivity and unstable photocurrent, and one die behaved more like a Schottky-like contact than a p–n diode.",
-          cause: "Contact quality, surface recombination, and process defects.",
-          fix: "Compared the measurements with the ideal TCAD device to separate design limits from fabrication effects.",
-          result: "Tied the performance gap to specific steps (etch, passivation, contacts) in the final report."
+          issue: "Low, unstable responsivity",
+          cause: "Contacts, surface recombination, defects",
+          fix: "Compared against the ideal TCAD device",
+          result: "Gap traced to etch, passivation, contacts"
         }
       ],
       results: [
-        "Oxide: 285.3 nm measured against a 300 nm target, within 5%.",
-        "Responsivity peaked at 0.0226 A/W at 520 nm on a comparison die, far below the ideal λ/1240 limit. That gap is the evidence for the fabrication issues above.",
-        "Ideal simulated structure: ≈ 4 fA dark current at −5 V."
+        "Oxide: 285 nm vs. a 300 nm target (within 5%).",
+        "Responsivity sits well below the ideal limit, consistent with the fab issues above."
       ],
       table: {
         caption: "Measured responsivity (comparison die) vs. the ideal limit at 100% quantum efficiency",
@@ -429,8 +428,8 @@ window.SITE = {
         "Step-Response Testing"
       ],
       summary: "Self-driving Raspberry Pi car with color tracking, ultrasonic stopping, and closed-loop PID speed control.",
-      problem: "Hold a constant speed under load, follow a colored path, and stop before obstacles, with one Raspberry Pi running every sensor at once.",
-      role: "Two-person project (ESE 205). We designed the control system, integrated the sensors, and ran the tuning and validation tests together.",
+      problem: "Hold 3 RPS under load, follow a colored path, and stop before obstacles, all on one Raspberry Pi.",
+      role: "Two-person project (ESE 205). We did the control design, sensor integration, tuning, and testing together.",
       highlights: [
         {
           value: "0.07 RPS",
@@ -520,57 +519,56 @@ window.SITE = {
       ],
       system: [
         [
-          "Platform:",
-          "Raspberry Pi with a power HAT, a DC drive motor and gearbox, and steering and camera servos."
+          "Platform",
+          "Raspberry Pi · DC drive motor · steering + camera servos"
         ],
         [
-          "Sensors:",
-          "camera, ultrasonic range sensor, and a photoresistor + LED wheel encoder."
+          "Sensors",
+          "Camera · ultrasonic · photoresistor wheel encoder"
         ],
         [
-          "Control:",
-          "PID speed loop on encoder feedback, camera-driven steering, and distance-scaled motor PWM."
+          "Control",
+          "PID speed loop · vision steering · distance-scaled PWM"
         ],
         [
-          "Software:",
-          "Python with a non-blocking, counter-based task scheduler."
+          "Software",
+          "Python · non-blocking task scheduler"
         ]
       ],
       implementation: [
         [
-          "PID speed loop.",
-          "Encoder sampled at 50 Hz and speed computed at 4 Hz, balancing responsiveness against CPU load."
+          "PID loop:",
+          "50 Hz encoder sampling, 4 Hz speed updates."
         ],
         [
-          "Color tracking.",
-          "HSV mask → centroid → steering and camera servo angle every 70 ms, switching from blue to yellow targets."
+          "Color tracking:",
+          "HSV centroid → servo angle every 70 ms."
         ],
         [
-          "Ultrasonic stopping.",
-          "Motor PWM scales down with distance, so the car slows smoothly and stops at a threshold."
+          "Ultrasonic stop:",
+          "PWM scales down with distance."
         ],
         [
-          "Scheduler.",
-          "Replaced blocking sleep() calls so camera, ultrasonic, and keyboard tasks run concurrently."
+          "Scheduler:",
+          "camera, sensor, and input tasks run concurrently."
         ]
       ],
       iteration: [
         {
-          issue: "Speed had to hold at 3 RPS both on the bench and while driving under load.",
-          cause: "Load and a start-up delay change the plant, so gains tuned on the stationary car weren't the best fit for the moving one.",
-          fix: "Retuned for the loaded car (Kp 8, Ki 1, Kd 25), then ran a gain study: ½ Kp was sluggish with more steady-state error, and 10× Kp overshot.",
-          result: "11% overshoot and 0.07 RPS steady-state error under load."
+          issue: "Bench gains didn't fit the moving car",
+          cause: "Load + start delay change the plant",
+          fix: "Retuned (Kp 8 · Ki 1 · Kd 25), gain study",
+          result: "11% overshoot, 0.07 RPS error"
         },
         {
-          issue: "The encoder signal's FFT showed a large peak near 6 Hz next to the expected 3 Hz.",
-          cause: "Wheel wobble, room lighting, and an encoder LED that intermittently turned off.",
-          fix: "Recalibrated before every run and identified the hardware fixes: a stiffer wheel mount, a reliable LED, and controlled lighting.",
-          result: "The 3 Hz peak confirmed the controller held its target speed despite the noise."
+          issue: "Extra 6 Hz peak in encoder FFT",
+          cause: "Wheel wobble, lighting, flaky encoder LED",
+          fix: "Recalibrated each run; isolated hardware fixes",
+          result: "3 Hz target confirmed"
         }
       ],
       results: [
-        "Met every project objective: PID speed control, user-steered driving with automatic stopping, hallway navigation, and blue-to-yellow target tracking.",
-        "Measured motor model: RPS ≈ 0.0276·PWM + 2.26."
+        "Met every objective: speed control, auto-stop, hallway navigation, and target tracking."
       ],
       table: {
         caption: "Step response to a 3 RPS target",
@@ -616,8 +614,8 @@ window.SITE = {
         "Label Studio"
       ],
       summary: "Multimodal egocentric benchmark for assistive AI, captured on Meta Aria glasses and under review at ICLR 2027.",
-      problem: "AI benchmarks test whether models can describe a scene, not whether they can guide a blind user through a task, and they ignore the audio, motion, and gaze data that smart glasses already capture.",
-      role: "Research assistant at the Harvard Ophthalmology AI Lab: I built the dataset, trained and managed the annotators, and wrote the tooling. I ran an earlier pilot as independent research at WashU.",
+      problem: "Benchmarks check whether AI can describe a scene, not whether it can guide a blind user, and they ignore audio, motion, and gaze.",
+      role: "Research assistant at the Harvard Ophthalmology AI Lab: built the dataset, led the annotators, and wrote the tooling.",
       highlights: [
         {
           value: "997",
@@ -640,7 +638,7 @@ window.SITE = {
         {
           title: "Earlier work: independent research pilot",
           meta: "ESE 4991 · Presented at WashU ESE Day · Spring 2026",
-          text: "About six months before the ICLR submission, I ran my own RGB-only pilot of VISTA. It was less complete than the final benchmark, but it's where the core finding first showed up: models describe scenes well but give weak guidance.",
+          text: "My RGB-only pilot, six months before the ICLR submission, is where the core finding first showed up.",
           highlights: [
             {
               value: "1,003",
@@ -661,16 +659,16 @@ window.SITE = {
           ],
           bullets: [
             [
-              "Annotation interface:",
-              "custom Label Studio setup for scene, Q&A, and action-goal labels."
+              "Annotation:",
+              "custom Label Studio interface."
             ],
             [
-              "Quality check:",
-              "inter-annotator BERTScore of 0.90 (QA) and 0.88 (scene) on 30 overlapping clips."
+              "Quality:",
+              "inter-annotator BERTScore 0.90 (QA), 0.88 (scene)."
             ],
             [
-              "Benchmark pipeline:",
-              "PyTorch + Hugging Face, scored with BERTScore, QA F1, and an LLM judge."
+              "Pipeline:",
+              "PyTorch + Hugging Face; BERTScore, QA F1, LLM judge."
             ]
           ],
           table: {
@@ -766,43 +764,42 @@ window.SITE = {
       ],
       system: [
         [
-          "Capture:",
-          "Meta Project Aria Gen 1 glasses: RGB, SLAM, and eye-tracking cameras, 7 microphones, and IMUs."
+          "Capture",
+          "Meta Aria Gen 1 · RGB, SLAM, eye-tracking cameras · 7 mics · IMUs"
         ],
         [
-          "Benchmark:",
-          "997 samples with 5 synchronized modalities and 3 annotation formats, across 10 assistive task categories."
+          "Benchmark",
+          "997 samples · 5 modalities · 10 task categories"
         ],
         [
-          "Evaluation:",
-          "zero-shot vision-language models plus a lightweight multimodal world-model baseline."
+          "Evaluation",
+          "Zero-shot VLMs + multimodal baseline"
         ]
       ],
       implementation: [
         [
           "Dataset:",
-          "vision-audio recordings on Meta Aria glasses across 10 assistive task categories."
+          "egocentric recordings across 10 assistive tasks."
         ],
         [
           "Annotation:",
-          "guidelines and training for the annotator team in Label Studio."
+          "guidelines and training in Label Studio."
         ],
         [
           "Tooling:",
-          "annotation tools and benchmarking scripts, with data hosted on Hugging Face and GitHub."
+          "benchmark scripts; data on Hugging Face + GitHub."
         ]
       ],
       iteration: [
         {
-          issue: "My ESE Day pilot evaluated models on RGB frames only.",
-          cause: "Models described scenes well but gave weak guidance, and RGB alone threw away audio, motion, and gaze context.",
-          fix: "The final benchmark adds all five synchronized modalities, three annotation formats, and a multimodal baseline.",
-          result: "Submitted to ICLR 2027 and currently under review."
+          issue: "Pilot evaluated RGB frames only",
+          cause: "Missed audio, motion, and gaze context",
+          fix: "Final benchmark uses all 5 modalities",
+          result: "Under review at ICLR 2027"
         }
       ],
       results: [
-        "Pilot: models scored BERTScore 0.83–0.86 on scene description but at most 3.03 / 5 on guidance usefulness.",
-        "Benchmark submitted to ICLR 2027 (under review)."
+        "Pilot: strong scene description (BERTScore 0.83–0.86), weak guidance (≤ 3.03 / 5)."
       ]
     },
     {
@@ -819,8 +816,8 @@ window.SITE = {
         "GPU Inference"
       ],
       summary: "Wearable assistant on Meta's Aria glasses that speaks scene descriptions in under a second.",
-      problem: "Blind and low-vision users need spoken descriptions of their surroundings fast enough to act on while moving.",
-      role: "I built the end-to-end system: capture on the glasses, speech input, captioning, and spoken output.",
+      problem: "Give blind and low-vision users spoken scene descriptions fast enough to act on while moving.",
+      role: "I built the end-to-end system: capture, speech input, captioning, and spoken output.",
       media: [
         {
           type: "image",
@@ -843,18 +840,18 @@ window.SITE = {
       cardTags: [],
       system: [
         [
-          "Pipeline:",
-          "Aria camera and audio → Flask server → Whisper (speech-to-text) → Qwen (vision-language) → text-to-speech."
+          "Pipeline",
+          "Aria camera + audio → Flask → Whisper → Qwen VLM → TTS"
         ]
       ],
       implementation: [
         [
-          "End-to-end build.",
-          "Capture, speech input, captioning, and spoken output integrated through one server."
+          "End-to-end build:",
+          "one server ties capture, captioning, and speech together."
         ]
       ],
       results: [
-        "Cut captioning latency 40% with GPU inference tuning and image resizing, reaching sub-second scene descriptions."
+        "40% faster captioning (GPU tuning + image resizing), under 1 s end to end."
       ]
     }
   ],

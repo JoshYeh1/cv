@@ -55,22 +55,28 @@
     inner ? `<section class="pp-block ${cls}"><div class="pp-block-head"><h2>${title}</h2></div>${inner}</section>` : "";
   const para = (text) => (text ? `<p class="pp-text">${esc(text)}</p>` : "");
 
+  // System / Design as a compact spec list
+  const specs = (rows) =>
+    rows && rows.length
+      ? `<dl class="spec">${rows.map(([k, v]) => `<div><dt>${esc(k.replace(/:$/, ""))}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`
+      : "";
+
+  // Test & iteration as one scannable table: each failure story reads across one row
   const iteration = (list) =>
     list && list.length
-      ? `<ol class="iter-list">${list
-          .map(
-            (it, n) => `
-          <li class="iter">
-            <div class="iter-n" aria-hidden="true">${String(n + 1).padStart(2, "0")}</div>
-            <dl>
-              <div><dt>Issue</dt><dd>${esc(it.issue)}</dd></div>
-              <div><dt>Root cause</dt><dd>${esc(it.cause)}</dd></div>
-              <div><dt>Fix</dt><dd>${esc(it.fix)}</dd></div>
-              <div class="iter-result"><dt>Result</dt><dd>${esc(it.result)}</dd></div>
-            </dl>
-          </li>`
-          )
-          .join("")}</ol>`
+      ? `<div class="iter-wrap"><table class="iter-table">
+          <thead><tr><th scope="col">Issue</th><th scope="col">Root cause</th><th scope="col">Fix</th><th scope="col">Result</th></tr></thead>
+          <tbody>${list
+            .map(
+              (r) => `<tr>
+                <td data-label="Issue">${esc(r.issue)}</td>
+                <td data-label="Root cause">${esc(r.cause)}</td>
+                <td data-label="Fix">${esc(r.fix)}</td>
+                <td data-label="Result" class="iter-res">${esc(r.result)}</td>
+              </tr>`
+            )
+            .join("")}</tbody>
+        </table></div>`
       : "";
 
   const results = (p.results && p.results.length) || p.table
@@ -128,7 +134,7 @@
       </div>
 
       <div class="pp-cols reveal">
-        ${block("System / Design", bullets(p.system))}
+        ${block("System / Design", specs(p.system))}
         ${block("Engineering implementation", bullets(p.implementation))}
       </div>
 
