@@ -60,3 +60,7 @@ main { counter-reset: sec; }
 .project-card:hover { border-color: var(--text); box-shadow: 5px 5px 0 var(--border-strong); transform: translate(-2px, -2px); }
 .pp-pager a:hover { border-color: var(--text); box-shadow: 4px 4px 0 var(--border-strong); }
 .pp-tile-media:hover { border-color: var(--text); }
+
+/* Section headings already have an underline, so drop the list's top border */
+.timeline { border-top: 0; }
+.tl-item:first-child .tl-card { padding-top: 8px; }

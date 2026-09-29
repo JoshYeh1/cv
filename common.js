@@ -19,6 +19,17 @@ window.UI = (() => {
   };
   const placeholder = (icon) => `<div class="placeholder">${ART[icon] || ART.gonio}</div>`;
 
+  // Minimal line icons for skill groups (24×24, stroke = currentColor)
+  const SKILL_ICONS = {
+    chip: '<rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx=".5"/><path d="M9 2.5v3.5M15 2.5v3.5M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/>',
+    scope: '<rect x="2.5" y="4" width="19" height="14" rx="2"/><path d="M5.5 11c1.2-4 2.4-4 3.6 0s2.4 4 3.6 0 2.4-4 3.6 0 1.2 2 2.2 2"/><path d="M8 21h8"/>',
+    gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1M18.7 18.7l-2.1-2.1M7.4 7.4 5.3 5.3"/><circle cx="12" cy="12" r="6.5"/>',
+    code: '<path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/>',
+    network: '<circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><path d="M7 6.8 10.2 11M7 17.2l3.2-4.2M14 12h3"/>',
+  };
+  const skillIcon = (name) =>
+    SKILL_ICONS[name] ? `<svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SKILL_ICONS[name]}</svg>` : "";
+
   const tags = (arr) => `<div class="tags">${arr.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>`;
 
   // Still image for a media item (used for card covers and gallery tiles)
@@ -62,5 +73,5 @@ window.UI = (() => {
   };
 
 
-  return { $, esc, ICONS, placeholder, tags, still, highlights, bullets, table, socialLinks, initNav, initReveal };
+  return { $, esc, ICONS, placeholder, skillIcon, tags, still, highlights, bullets, table, socialLinks, initNav, initReveal };
 })();

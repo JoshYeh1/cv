@@ -238,6 +238,7 @@ window.SITE = {
   experience: [
     {
       role: "Electrical Engineering Researcher",
+      mark: "WU",
       org: "Henriksen Lab, Washington University in St. Louis",
       date: "May 2026 – Present",
       bullets: [
@@ -248,6 +249,7 @@ window.SITE = {
     },
     {
       role: "AI Research Assistant",
+      mark: "HMS",
       org: "Harvard Ophthalmology AI Lab",
       date: "2025 – 2026",
       bullets: [
@@ -259,6 +261,7 @@ window.SITE = {
     },
     {
       role: "Electrical Engineering Grader",
+      mark: "WU",
       org: "Washington University in St. Louis",
       date: "Sep 2025 – Dec 2025",
       bullets: [
@@ -269,6 +272,7 @@ window.SITE = {
     },
     {
       role: "Design & Construction Jr. Project Assistant",
+      mark: "PU",
       org: "Pepperdine University",
       date: "2021 – 2024",
       bullets: [
@@ -280,22 +284,24 @@ window.SITE = {
   ],
 
   skills: [
-    { group: "Hardware & PCB", items: ["EasyEDA", "PCB Design & Layout", "PCB Assembly / Rework", "Soldering", "PSpice", "Multisim"] },
-    { group: "Lab & Test", items: ["Oscilloscopes", "Multimeters", "Power Supplies", "Function Generators", "Cleanroom Processing"] },
-    { group: "Mechanical & Controls", items: ["SolidWorks", "Embedded Systems", "PID Control", "Stepper Motors", "Motion Control"] },
-    { group: "Programming", items: ["Python", "MATLAB", "R"] },
-    { group: "AI & Data", items: ["PyTorch", "Label Studio", "Hugging Face", "VLM Benchmarking"] },
+    { group: "Hardware & PCB", icon: "chip", items: ["EasyEDA", "PCB Design & Layout", "PCB Assembly / Rework", "Soldering", "PSpice", "Multisim"] },
+    { group: "Lab & Test", icon: "scope", items: ["Oscilloscopes", "Multimeters", "Power Supplies", "Function Generators", "Cleanroom Processing"] },
+    { group: "Mechanical & Controls", icon: "gear", items: ["SolidWorks", "Embedded Systems", "PID Control", "Stepper Motors", "Motion Control"] },
+    { group: "Programming", icon: "code", items: ["Python", "MATLAB", "R"] },
+    { group: "AI & Data", icon: "network", items: ["PyTorch", "Label Studio", "Hugging Face", "VLM Benchmarking"] },
   ],
 
   education: [
     {
       school: "Washington University in St. Louis",
+      mark: "WU",
       place: "St. Louis, MO",
       date: "Aug 2024 – May 2027",
       degrees: ["B.S. Electrical Engineering · GPA 3.4", "M.Eng. Engineering Management"],
     },
     {
       school: "Pepperdine University",
+      mark: "PU",
       place: "Malibu, CA",
       date: "Jan 2021 – Apr 2024",
       degrees: ["B.S. Physics", "B.A. Natural Science"],

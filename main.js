@@ -1,6 +1,6 @@
 (() => {
   const S = window.SITE;
-  const { $, esc, placeholder, tags, socialLinks } = window.UI;
+  const { $, esc, placeholder, skillIcon, tags, socialLinks } = window.UI;
 
   /* ---------- hero / static ---------- */
   document.title = `${S.name} — ${S.role}`;
@@ -62,23 +62,30 @@
     .map(
       (e) => `
     <li class="tl-item reveal"><div class="tl-card">
-      <div class="tl-head"><h3>${esc(e.role)}</h3><span class="tl-date">${esc(e.date)}</span></div>
-      <div class="tl-org">${esc(e.org)}</div>
-      <ul>${e.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
-      ${e.links ? `<div class="tl-links">${e.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
+      <span class="tl-date">${esc(e.date)}</span>
+      <div class="tl-body">
+        <div class="tl-title">
+          ${e.mark ? `<div class="org-mark" aria-hidden="true">${esc(e.mark)}</div>` : ""}
+          <div><h3>${esc(e.role)}</h3><div class="tl-org">${esc(e.org)}</div></div>
+        </div>
+        <ul>${e.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
+        ${e.links ? `<div class="tl-links">${e.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
+      </div>
     </div></li>`
     )
     .join("");
 
   /* ---------- skills / edu ---------- */
   $("#skills-grid").innerHTML = S.skills
-    .map((g) => `<div class="skill-group reveal"><h4>${esc(g.group)}</h4>${tags(g.items)}</div>`)
+    .map((g) => `<div class="skill-group reveal"><h4>${skillIcon(g.icon)}${esc(g.group)}</h4>${tags(g.items)}</div>`)
     .join("");
   $("#edu").innerHTML = S.education
     .map(
-      (e) => `<div class="edu-card reveal"><h3>${esc(e.school)}</h3>
+      (e) => `<div class="edu-card reveal">
+      ${e.mark ? `<div class="org-mark" aria-hidden="true">${esc(e.mark)}</div>` : ""}
+      <div><h3>${esc(e.school)}</h3>
       <span class="tl-date">${esc(e.date)} · ${esc(e.place)}</span>
-      ${e.degrees.map((d) => `<p>${esc(d)}</p>`).join("")}</div>`
+      ${e.degrees.map((d) => `<p>${esc(d)}</p>`).join("")}</div></div>`
     )
     .join("");
 
