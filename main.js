@@ -69,9 +69,6 @@
   mail.href = `mailto:${S.email}`;
   mail.textContent = S.email;
 
-  $("#stats").innerHTML = S.stats
-    .map((s) => `<div class="stat"><div class="stat-value">${esc(s.value)}</div><div class="stat-label">${esc(s.label)}</div></div>`)
-    .join("");
   $("#about-body").innerHTML = S.about.map((p) => `<p>${esc(p)}</p>`).join("");
 
   /* ---------- projects ---------- */

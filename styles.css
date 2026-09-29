@@ -147,17 +147,6 @@ h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; font-weight: 70
 .traces circle { fill: var(--bg); stroke: var(--accent); stroke-width: 1.5; opacity: .8; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 
-/* ---------- stats ---------- */
-.stats {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--border); border-radius: var(--radius); background: var(--card);
-  overflow: hidden;
-}
-.stat { padding: 28px 30px; }
-.stat + .stat { border-left: 1px solid var(--border); }
-.stat-value { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
-.stat-label { color: var(--muted); font-size: 14px; margin-top: 4px; }
-
 /* ---------- about ---------- */
 .about-body { display: grid; gap: 18px; max-width: 760px; font-size: 18px; color: var(--muted); }
 .about-body p:first-child { color: var(--text); }
@@ -338,8 +327,6 @@ h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; font-weight: 70
 }
 @media (max-width: 640px) {
   .nav-links a:not(.btn) { display: none; }
-  .stats { grid-template-columns: 1fr; }
-  .stat + .stat { border-left: 0; border-top: 1px solid var(--border); }
   .skills-grid { grid-template-columns: 1fr; }
   .modal { padding: 0; }
   .modal-panel { max-height: 100vh; border-radius: 0; height: 100%; }

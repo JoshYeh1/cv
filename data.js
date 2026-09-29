@@ -31,11 +31,6 @@ window.SITE = {
     "My work sits where electronics meet the physical world: PCB design and assembly, motor-control electronics, semiconductor fabrication, and embedded control loops — plus multimodal AI systems running on real hardware.",
   ],
 
-  stats: [
-    { value: "5", label: "Hardware, systems & research projects" },
-    { value: "<1s", label: "Scene-description latency on AR glasses" },
-    { value: "Class 100", label: "Cleanroom device fabrication" },
-  ],
 
   projects: [
     {
