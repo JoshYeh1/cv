@@ -48,7 +48,7 @@ window.SITE = {
     {
       id: "goniometer",
       featured: true,
-      title: "Two-Axis Cryogenic Goniometer",
+      title: "ATLAS: Two-Axis Cryogenic Goniometer",
       subtitle: "Capstone → Henriksen Lab · Software & Systems Lead",
       date: "Jan 2026 – Present",
       icon: "gonio",
@@ -70,7 +70,7 @@ window.SITE = {
         "Sensor Calibration",
         "Acceptance Testing"
       ],
-      summary: "Two-axis motion control with closed-loop Hall-sensor feedback, for rotating graphene samples inside a dilution refrigerator.",
+      summary: "ATLAS is a sample control system: two-axis motion control with closed-loop Hall-sensor feedback, for rotating graphene samples inside a dilution refrigerator.",
       problem: "Rotate a graphene sample to any angle in a strong magnetic field, at millikelvin temperatures, without adding heat or twisting its wiring.",
       role: "Software & systems integration lead. I own the firmware, kinematics, and closed loop, and designed the Hall-amp PCB. Capstone (3-person team) → summer 2026 research with Maddie Cope.",
       highlights: [
@@ -884,7 +884,7 @@ window.SITE = {
       org: "Henriksen Lab, Washington University in St. Louis",
       date: "May 2026 – Present",
       bullets: [
-        "Continuing development of a motorized two-axis goniometer for graphene experiments.",
+        "Developing ATLAS, a motorized two-axis goniometer and sample control system for graphene experiments.",
         "Built closed-loop orientation control from 3-axis Hall-sensor feedback (adaptive Jacobian, Hall-verified moves).",
         "Calibrating against a Helmholtz-coil field and evaluating cryogenic compatibility, thermal load, and wiring strain."
       ]
