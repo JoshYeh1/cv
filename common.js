@@ -58,7 +58,7 @@ window.UI = (() => {
         <caption>${esc(t.caption)}</caption>
         <thead><tr>${t.head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead>
         <tbody>${t.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
-      </table></div>` : "";
+      </table>${t.note ? `<p class="table-note">${esc(t.note)}</p>` : ""}</div>` : "";
 
   const socialLinks = (S) => `
     <a class="icon-link" href="${S.github}" target="_blank" rel="noopener" aria-label="GitHub">${ICONS.github}</a>
@@ -70,6 +70,30 @@ window.UI = (() => {
     const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+
+    // Mobile menu
+    const toggle = $("#nav-toggle"), links = $("#nav-links");
+    if (toggle && links) {
+      const set = (open) => { links.classList.toggle("open", open); toggle.setAttribute("aria-expanded", String(open)); toggle.textContent = open ? "Close" : "Menu"; };
+      toggle.addEventListener("click", () => set(!links.classList.contains("open")));
+      links.addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });
+    }
+
+    // Highlight the nav link for the section in view (home page only)
+    const map = new Map();
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach((a) => {
+      const sec = document.querySelector(a.getAttribute("href"));
+      if (sec) map.set(sec, a);
+    });
+    if (map.size) {
+      const spy = new IntersectionObserver(
+        (entries) => entries.forEach((en) => {
+          if (en.isIntersecting) { map.forEach((a) => a.classList.remove("active")); map.get(en.target).classList.add("active"); }
+        }),
+        { rootMargin: "-45% 0px -50% 0px" }
+      );
+      map.forEach((_, sec) => spy.observe(sec));
+    }
   };
 
   const initReveal = () => {

@@ -12,7 +12,10 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://joshyeh1.github.io/cv/" />
+  <meta property="og:url" content="https://joshyeh1.github.io/cv/" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23d9481c'/><text x='16' y='21' font-family='Helvetica,Arial,sans-serif' font-size='13' font-weight='700' fill='white' text-anchor='middle'>JY</text></svg>" />
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -22,20 +25,21 @@
 <body class="project-page">
   <header class="nav" id="nav">
     <a href="index.html" class="nav-logo">Josh Yeh</a>
-    <nav class="nav-links">
-      <a href="index.html#projects">Projects</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="index.html#projects" class="active">Projects</a>
       <a href="index.html#experience">Experience</a>
-      <a href="index.html#education">Education</a>
       <a href="index.html#skills">Skills</a>
+      <a href="index.html#education">Education</a>
       <a href="index.html#contact">Contact</a>
-      <a class="btn btn-sm" id="nav-resume" href="#" target="_blank" rel="noopener">Résumé</a>
+      <a class="btn btn-sm" href="assets/Josh_Yeh_Resume_EE.pdf" target="_blank" rel="noopener">Résumé ↗</a>
     </nav>
   </header>
 
-  <main id="project"></main>
+  <main id="project"><noscript><p class="noscript-list">This project page needs JavaScript. <a href="index.html">Back to the portfolio</a> · <a href="assets/Josh_Yeh_Resume_EE.pdf">Résumé (PDF)</a></p></noscript></main>
 
   <footer class="footer">
-    <span>© <span id="year"></span> Josh Yeh</span>
+    <span>© <span id="year">2026</span> Josh Yeh</span>
     <a href="index.html#projects">← All projects</a>
   </footer>
 

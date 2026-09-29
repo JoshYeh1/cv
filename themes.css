@@ -30,6 +30,12 @@
 .pp-back,
 .pp-pager span,
 .stat-link,
+.group-label,
+.kr-label,
+.iter-n,
+.iter dt,
+.table-note,
+.pp-more summary,
 .hero-focus,
 #lb-count { font-family: var(--mono); letter-spacing: 0; }
 .project-meta, .tl-date { font-size: 12.5px; }
@@ -59,7 +65,7 @@ main { counter-reset: sec; }
 .project-card, .skill-group, .edu-card, .contact-card, .pp-hero, .pp-pager a, .table-wrap, .stats { border-radius: 8px; }
 .pp-tile-media, .hl { border-radius: 6px; }
 .btn { border-radius: 6px; }
-.project-card:hover { border-color: var(--text); box-shadow: 5px 5px 0 var(--border-strong); transform: translate(-2px, -2px); }
+.project-card:hover { border-color: var(--text); box-shadow: 0 6px 0 -1px var(--border-strong); transform: translateY(-3px); }
 .pp-pager a:hover { border-color: var(--text); box-shadow: 4px 4px 0 var(--border-strong); }
 .pp-tile-media:hover { border-color: var(--text); }
 
@@ -71,3 +77,12 @@ main { counter-reset: sec; }
 .stats { box-shadow: 6px 6px 0 var(--surface-2), 6px 6px 0 1px var(--border-strong); }
 .stat { border-top: 3px solid transparent; }
 .stat:hover { border-top-color: var(--accent); }
+
+/* Numbered case-study sections on project pages, matching the home page */
+.pp { counter-reset: pp; }
+.pp-block-head h2::before {
+  counter-increment: pp; content: counter(pp, decimal-leading-zero) " /";
+  font-family: var(--mono); font-size: 12.5px; font-weight: 500; color: var(--accent); letter-spacing: 0; margin-right: 12px; vertical-align: 3px;
+}
+.iter { border-radius: 8px; }
+.iter-n { font-family: var(--mono); }

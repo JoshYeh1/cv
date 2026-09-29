@@ -7,6 +7,7 @@ Static portfolio site (plain HTML/CSS/JS, no build step), hosted on GitHub Pages
 - `project.html` + `project.js`: one page per project (`project.html?id=goniometer`, etc.) with a click-to-enlarge gallery
 - `common.js`: helpers shared by both pages
 - `styles.css`: base layout; `themes.css`: the "Lab Notebook" design layer (colors, fonts, dot grid)
+- Hero, About, and Contact text lives directly in `index.html` (so it's visible to search engines and link previews); everything else comes from `data.js` (see the comment at its top for field meanings).
 
 ## Editing content
 All text, projects, and media live in **`data.js`**. Put images in `assets/img/`, videos in `assets/video/`, and your résumé PDF at `assets/Josh_Yeh_Resume_EE.pdf`.

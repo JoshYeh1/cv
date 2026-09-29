@@ -3,17 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Josh Yeh · Electrical Engineer</title>
-  <meta name="description" content="Josh Yeh: electrical engineer focused on hardware, controls, test, and systems integration. Projects in cryogenic motion control, cleanroom photodiode fabrication, and closed-loop robotics." />
+  <title>Josh Yeh · Electrical Engineer | Hardware, Controls, Test &amp; Systems Integration</title>
+  <meta name="description" content="Josh Yeh is an electrical engineer who builds and validates electromechanical systems: cryogenic motion control, analog sensing and PCB design, cleanroom photodiode fabrication, and PID-controlled robotics." />
+  <link rel="canonical" href="https://joshyeh1.github.io/cv/" />
   <meta property="og:title" content="Josh Yeh · Electrical Engineer" />
-  <meta property="og:description" content="Hardware, controls, test, and systems integration." />
+  <meta property="og:description" content="Hardware · Controls · Test · Systems Integration. Engineering projects in cryogenic motion control, semiconductor fabrication, and closed-loop control." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://joshyeh1.github.io/cv/" />
   <meta property="og:image" content="https://joshyeh1.github.io/cv/assets/img/og-card.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Josh Yeh, Electrical Engineer, with a photo of the two-axis goniometer test setup" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Josh Yeh · Electrical Engineer" />
+  <meta name="twitter:description" content="Hardware · Controls · Test · Systems Integration." />
+  <meta name="twitter:image" content="https://joshyeh1.github.io/cv/assets/img/og-card.jpg" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23d9481c'/><text x='16' y='21' font-family='Helvetica,Arial,sans-serif' font-size='13' font-weight='700' fill='white' text-anchor='middle'>JY</text></svg>" />
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -21,93 +27,117 @@
   <link rel="stylesheet" href="themes.css" />
 </head>
 <body>
+  <a class="skip-link" href="#projects">Skip to projects</a>
+
   <header class="nav" id="nav">
     <a href="#top" class="nav-logo">Josh Yeh</a>
-    <nav class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
       <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
-      <a class="btn btn-sm" id="nav-resume" href="#" target="_blank" rel="noopener">Résumé</a>
+      <a class="btn btn-sm" href="assets/Josh_Yeh_Resume_EE.pdf" target="_blank" rel="noopener">Résumé ↗</a>
     </nav>
   </header>
 
   <main id="top">
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-name">
       <div class="hero-text reveal">
         <p class="eyebrow">Open to full-time EE, controls, test &amp; systems integration roles · May 2027</p>
-        <h1 id="hero-name"></h1>
-        <p class="hero-role" id="hero-role"></p>
-        <p class="hero-tagline" id="hero-tagline"></p>
+        <h1 id="hero-name">Josh Yeh</h1>
+        <p class="hero-role">Electrical Engineer<span class="hero-focus">Hardware · Controls · Test · Systems Integration</span></p>
+        <p class="hero-tagline">I build and validate electromechanical systems, from sensors and analog electronics to motion control and embedded software.</p>
         <div class="hero-cta">
           <a href="#projects" class="btn btn-primary">View projects</a>
-          <a href="#" class="btn" id="hero-resume" target="_blank" rel="noopener">Download résumé</a>
+          <a href="assets/Josh_Yeh_Resume_EE.pdf" class="btn" target="_blank" rel="noopener">Résumé ↗</a>
         </div>
-        <div class="hero-social" id="hero-social"></div>
+        <div class="hero-social">
+          <a class="icon-link" href="https://github.com/JoshYeh1" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg></a>
+          <a class="icon-link" href="https://www.linkedin.com/in/joshua-yeh-profile" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg></a>
+          <a class="icon-link" href="mailto:j.y.yeh@email.wustl.edu" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+        </div>
       </div>
       <div class="hero-visual reveal">
-        <div class="photo-frame" id="photo-frame"></div>
+        <div class="photo-frame"><img src="assets/img/headshot.jpg" alt="Portrait of Josh Yeh" width="1265" height="949" /></div>
       </div>
     </section>
 
-    <!-- HEADLINE STATS -->
-    <section class="stats reveal" id="stats" aria-label="Highlights"></section>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="section-head reveal">
-        <h2>About</h2>
-      </div>
-      <div class="about-body reveal" id="about-body"></div>
-    </section>
+    <!-- ENGINEERING HIGHLIGHTS (rendered from data.js) -->
+    <section class="stats reveal" id="stats" aria-label="Engineering highlights"></section>
 
     <!-- PROJECTS -->
-    <section class="section" id="projects">
+    <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="section-head reveal">
-        <h2>Projects</h2>
+        <h2 id="projects-title">Selected Engineering Projects</h2>
       </div>
-      <div class="project-grid" id="project-grid"></div>
+      <div id="project-list">
+        <noscript>
+          <ul class="noscript-list">
+            <li><a href="project.html?id=goniometer">Two-Axis Cryogenic Goniometer</a>: two-axis motion control, firmware, and Hall-sensor electronics for a dilution refrigerator.</li>
+            <li><a href="project.html?id=photodiode">Silicon Photodiode Fabrication</a>: cleanroom fabrication, TCAD simulation, and I–V / responsivity testing.</li>
+            <li><a href="project.html?id=robot">Autonomous Robot Car</a>: PID speed control, color tracking, and sensor feedback on a Raspberry Pi.</li>
+            <li><a href="project.html?id=vista">VISTA Benchmark</a>: multimodal egocentric benchmark for assistive AI.</li>
+            <li><a href="project.html?id=aria">Meta Glasses AI Assistant</a>: real-time scene descriptions on Meta Aria glasses.</li>
+          </ul>
+        </noscript>
+      </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section class="section" id="experience">
+    <section class="section" id="experience" aria-labelledby="experience-title">
       <div class="section-head reveal">
-        <h2>Experience</h2>
+        <h2 id="experience-title">Experience</h2>
       </div>
       <ol class="timeline" id="timeline"></ol>
     </section>
 
-    <!-- EDUCATION -->
-    <section class="section" id="education">
-      <div class="section-head reveal">
-        <h2>Education</h2>
-      </div>
-      <div class="edu" id="edu"></div>
-    </section>
-
     <!-- SKILLS -->
-    <section class="section" id="skills">
+    <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="section-head reveal">
-        <h2>Skills</h2>
+        <h2 id="skills-title">Technical Skills</h2>
       </div>
       <div class="skills-grid" id="skills-grid"></div>
     </section>
 
+    <!-- EDUCATION -->
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="section-head reveal">
+        <h2 id="education-title">Education</h2>
+      </div>
+      <div class="edu" id="edu"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section-head reveal">
+        <h2 id="about-title">About</h2>
+      </div>
+      <div class="about-body reveal">
+        <p>I'm an electrical engineering student at WashU with a physics background, focused on hardware, controls, test, and systems integration. My work sits where electronics meet the physical world, from cryogenic motion control and analog sensing to semiconductor fabrication and robotics.</p>
+        <p>I like taking a system from requirements and first prototypes through integration, troubleshooting, and validation.</p>
+      </div>
+    </section>
+
     <!-- CONTACT -->
-    <section class="section contact" id="contact">
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
       <div class="contact-card reveal">
-        <h2>Get in touch</h2>
+        <h2 id="contact-title">Get in touch</h2>
         <p>I'm looking for full-time roles in electrical engineering: hardware, controls, test, and systems integration. Email is the fastest way to reach me.</p>
-        <a class="btn btn-primary btn-lg" id="contact-email" href="#"></a>
-        <div class="hero-social center" id="contact-social"></div>
+        <a class="btn btn-primary btn-lg" href="mailto:j.y.yeh@email.wustl.edu">j.y.yeh@email.wustl.edu</a>
+        <div class="contact-links">
+          <a href="assets/Josh_Yeh_Resume_EE.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+          <a href="https://github.com/JoshYeh1" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/joshua-yeh-profile" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <span>© <span id="year"></span> Josh Yeh</span>
+    <span>© <span id="year">2026</span> Josh Yeh</span>
     <a href="#top">Back to top ↑</a>
   </footer>
 
