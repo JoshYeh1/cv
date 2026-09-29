@@ -237,6 +237,7 @@ window.SITE = {
         "Managed and trained a team of annotators, creating guidelines for high-quality annotations in Label Studio.",
         "Designed annotation tools and benchmarking scripts; hosted data via Hugging Face and GitHub.",
       ],
+      links: [{ label: "Lab profile", url: "https://wang.hms.harvard.edu/team/joshua-yeh/" }],
     },
     {
       role: "Electrical Engineering Grader",
