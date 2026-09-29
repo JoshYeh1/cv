@@ -170,7 +170,13 @@
       <div class="project-meta mono"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
       <h3>${esc(p.title)}</h3>
       <p class="lead">${esc(p.description || p.summary)}</p>
+      ${p.highlights ? `<div class="highlights">${p.highlights.map((h) => `<div class="hl"><div class="hl-value">${esc(h.value)}</div><div class="hl-label">${esc(h.label)}</div></div>`).join("")}</div>` : ""}
       <ul>${p.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
+      ${p.table ? `<div class="table-wrap"><table>
+        <caption class="mono">${esc(p.table.caption)}</caption>
+        <thead><tr>${p.table.head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead>
+        <tbody>${p.table.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
+      </table></div>` : ""}
       ${tags(p.tags)}
       ${p.links && p.links.length ? `<div class="links">${p.links.map((l) => `<a class="btn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}`;
     modal.classList.add("open");

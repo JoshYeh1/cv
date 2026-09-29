@@ -62,21 +62,37 @@ window.SITE = {
     {
       id: "photodiode",
       title: "Silicon Photodiode Fabrication",
-      subtitle: "Semiconductor Fabrication Lab",
+      subtitle: "Semiconductor Fabrication Lab · ESE 4361",
       date: "Jan 2025 – May 2026",
       icon: "wafer",
-      tags: ["Cleanroom", "p–n Junction", "Lithography", "Device Characterization"],
+      tags: ["Cleanroom", "Thermal Oxidation", "Photolithography", "RIE", "Ion Implantation", "Sentaurus TCAD", "Keysight B1500A"],
       summary:
-        "Fabricated and characterized silicon p–n photodiodes end-to-end in a Class 100/1000 cleanroom.",
+        "Designed, fabricated, simulated, and tested silicon p–n photodiodes in a Class 100/1000 cleanroom, from thermal oxidation to aluminum contacts.",
+      description:
+        "A front-to-back photodiode project. I ran thermal oxidation, photolithography, reactive ion etching, boron ion implantation, annealing, and aluminum back-end contact formation in the cleanroom, and simulated the same process in Synopsys Sentaurus TCAD. My main wafer was lost to an oxide over-etch during RIE, which I traced to photoresist adhesion and hard-bake issues. I then characterized comparison devices on a probe station using dark/illuminated I–V sweeps and calibrated responsivity measurements at three laser wavelengths.",
+      highlights: [
+        { value: "285 nm", label: "Thermal SiO₂ grown (300 nm target)" },
+        { value: "4 fA", label: "Simulated dark current at −5 V" },
+        { value: "3 λ", label: "Responsivity at 405 / 520 / 635 nm" },
+        { value: "$4.11", label: "Modeled cost per photodiode" },
+      ],
       bullets: [
-        "Fabricated silicon p–n photodiodes in a Class 100/1000 cleanroom using a full process flow.",
-        "Maintained industry-standard wafer runsheets and digital lab notebooks documenting process parameters.",
-        "Characterized fabricated devices using electrical test equipment and analyzed measurement results.",
+        "Grew a 285.3 nm thermal oxide (target 300 nm) with a 10 h dry oxidation at 1100 °C, verified on a Woollam α-SE ellipsometer.",
+        "Simulated the full process in Sentaurus TCAD (SProcess + SDevice): 100 keV, 1×10¹³ cm⁻² boron implant; compared 10 / 100 / 1000 keV cases (junction depth 2.14 – 3.61 µm).",
+        "Root-caused a complete oxide over-etch to photoresist hard-bake/adhesion and specified tighter bake, descum, and RIE-time control.",
+        "Measured dark and illuminated I–V curves with a Keysight B1500A and responsivity with a Thorlabs PM100D2 (peak 0.0226 A/W at 520 nm on a comparison die).",
+        "Built a production cost model from tool rates and runsheets: ≈ $2,055 per wafer, ≈ $4.11 per photodiode.",
+        "Maintained industry-standard wafer runsheets and digital lab notebooks documenting every process parameter.",
       ],
       media: [
-        { type: "image", src: "assets/img/photodiode-wafer.jpg", caption: "Finished silicon wafer with patterned photodiode die" },
+        { type: "image", src: "assets/img/photodiode-wafer.jpg", caption: "Silicon wafer with patterned photodiode die" },
+        { type: "image", src: "assets/img/photodiode-process-flow.png", caption: "Simplified process flow: oxidation → lithography → boron implant → anneal → nitride → contacts → aluminum" },
+        { type: "image", src: "assets/img/photodiode-tcad-structure.png", caption: "Final simulated device structure from Sentaurus SProcess (net active doping)" },
+        { type: "image", src: "assets/img/photodiode-dopant-profile.png", caption: "Simulated boron profile before and after the 1100 °C anneal" },
+        { type: "image", src: "assets/img/photodiode-iv-curves.png", caption: "Measured I–V curves under different light sources (comparison device, Die 10): illuminated curves show photocurrent" },
+        { type: "image", src: "assets/img/photodiode-ellipsometer.jpg", caption: "Woollam α-SE ellipsometer used to measure oxide thickness" },
       ],
-      links: [],
+      links: [{ label: "Read the full lab paper (PDF)", url: "assets/papers/Yeh_Silicon_Photodiode_Paper.pdf" }],
     },
     {
       id: "aria",
@@ -104,18 +120,36 @@ window.SITE = {
       subtitle: "Research · Under review at ICLR 2027",
       date: "2025 – 2026",
       icon: "vista",
-      tags: ["Multimodal", "Egocentric", "Project Aria", "VLM Evaluation", "Label Studio", "Hugging Face"],
+      tags: ["Multimodal", "Egocentric", "Project Aria", "PyTorch", "Hugging Face", "VLM Evaluation", "Label Studio"],
       summary:
         "A multimodal egocentric benchmark of goal-oriented assistance for blind and low-vision users, captured on Meta Project Aria glasses.",
       description:
-        "VISTA contains 997 samples captured with Meta Project Aria glasses. Each sample has five synchronized modalities (vision, audio, eye tracking, inertial signals, and spatial tracking) and three annotation formats, covering ten categories of goal-oriented assistive tasks. We run zero-shot evaluations of representative vision-language models and build a lightweight multimodal world-model baseline that uses all five modalities. Current models can often describe egocentric scenes but still struggle to give context-aware, goal-directed guidance.",
-      bullets: [
-        "Co-built the dataset at the Harvard Ophthalmology AI Lab: 997 samples × 5 synchronized sensor modalities.",
-        "Managed and trained a team of annotators and wrote the annotation guidelines in Label Studio.",
-        "Designed annotation tools and benchmarking scripts; hosted data via Hugging Face and GitHub.",
+        "VISTA is a 997-sample benchmark captured with Meta Project Aria glasses. Each sample has five synchronized modalities (vision, audio, eye tracking, inertial signals, and spatial tracking) and three annotation formats, covering ten categories of goal-oriented assistive tasks. We run zero-shot evaluations of representative vision-language models and build a lightweight multimodal world-model baseline that uses all five modalities. Current models can often describe egocentric scenes, but they still struggle to give context-aware, goal-directed guidance.",
+      highlights: [
+        { value: "1,003", label: "Egocentric recordings collected" },
+        { value: "10", label: "Assistive task categories" },
+        { value: "8", label: "Annotators trained & managed" },
+        { value: "0.90", label: "Inter-annotator BERTScore (QA)" },
       ],
+      bullets: [
+        "Collected 1,000+ recordings in indoor and outdoor settings (streets, train stations, airports) across 10 task categories, including hazard detection, navigation, text reading, and social cues.",
+        "Built a custom Label Studio annotation interface, wrote the guidelines and training materials, and managed a team of 8 annotators.",
+        "Validated annotation quality with inter-annotator agreement: BERTScore 0.90 (QA) and 0.88 (scene description).",
+        "Wrote the benchmarking pipeline in PyTorch + Hugging Face Transformers and evaluated LLaVA-1.5, BLIP-2, and Qwen-VL on scene description, QA, and navigation guidance.",
+        "Showed that models caption scenes well (BERTScore ≈ 0.83–0.86) but give weak action-oriented guidance (LLM-judge ≤ 3.03 / 5).",
+      ],
+      table: {
+        caption: "Zero-shot VLM results on VISTA (higher is better)",
+        head: ["Model", "Scene BERT", "Guide BERT", "QA F1", "Scene Judge", "Guide Judge"],
+        rows: [
+          ["BLIP-2", "0.849", "0.833", "0.128", "2.49", "2.01"],
+          ["LLaVA-1.5", "0.861", "0.832", "0.280", "2.59", "2.25"],
+          ["Qwen-VL", "0.830", "0.817", "0.232", "2.79", "3.03"],
+        ],
+      },
       media: [
         { type: "image", src: "assets/img/vista-aria-sensors.png", fit: "contain", caption: "Meta Project Aria Gen 1 sensor layout (RGB, SLAM & eye-tracking cameras, 7 mics, IMUs, barometer, magnetometer) used for VISTA data collection. Diagram: Meta" },
+        { type: "image", src: "assets/img/vista-pipeline.png", caption: "VISTA pipeline: Aria capture → video/audio/IMU processing → annotation → VLM benchmarking" },
       ],
       links: [],
     },
