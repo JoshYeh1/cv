@@ -239,6 +239,7 @@ window.SITE = {
     {
       role: "Electrical Engineering Researcher",
       mark: "WU",
+      logo: "assets/logos/washu.png",
       org: "Henriksen Lab, Washington University in St. Louis",
       date: "May 2026 – Present",
       bullets: [
@@ -250,6 +251,7 @@ window.SITE = {
     {
       role: "AI Research Assistant",
       mark: "HMS",
+      logo: "assets/logos/hms.png",
       org: "Harvard Ophthalmology AI Lab",
       date: "2025 – 2026",
       bullets: [
@@ -262,6 +264,7 @@ window.SITE = {
     {
       role: "Electrical Engineering Grader",
       mark: "WU",
+      logo: "assets/logos/washu.png",
       org: "Washington University in St. Louis",
       date: "Sep 2025 – Dec 2025",
       bullets: [
@@ -273,6 +276,7 @@ window.SITE = {
     {
       role: "Design & Construction Jr. Project Assistant",
       mark: "PU",
+      logo: "assets/logos/pepperdine.png",
       org: "Pepperdine University",
       date: "2021 – 2024",
       bullets: [
@@ -295,6 +299,7 @@ window.SITE = {
     {
       school: "Washington University in St. Louis",
       mark: "WU",
+      logo: "assets/logos/washu.png",
       place: "St. Louis, MO",
       date: "Aug 2024 – May 2027",
       degrees: ["B.S. Electrical Engineering · GPA 3.4", "M.Eng. Engineering Management"],
@@ -302,6 +307,7 @@ window.SITE = {
     {
       school: "Pepperdine University",
       mark: "PU",
+      logo: "assets/logos/pepperdine.png",
       place: "Malibu, CA",
       date: "Jan 2021 – Apr 2024",
       degrees: ["B.S. Physics", "B.A. Natural Science"],

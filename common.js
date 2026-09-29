@@ -30,6 +30,11 @@ window.UI = (() => {
   const skillIcon = (name) =>
     SKILL_ICONS[name] ? `<svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SKILL_ICONS[name]}</svg>` : "";
 
+  // Org badge: the real logo recolored to the accent via CSS mask, or text initials as a fallback
+  const orgMark = (o) =>
+    o.logo ? `<div class="org-mark has-logo" role="img" aria-label="${esc(o.org || o.school || "")} logo"><span style="-webkit-mask-image:url('${esc(o.logo)}');mask-image:url('${esc(o.logo)}')"></span></div>`
+    : o.mark ? `<div class="org-mark" aria-hidden="true">${esc(o.mark)}</div>` : "";
+
   const tags = (arr) => `<div class="tags">${arr.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>`;
 
   // Still image for a media item (used for card covers and gallery tiles)
@@ -73,5 +78,5 @@ window.UI = (() => {
   };
 
 
-  return { $, esc, ICONS, placeholder, skillIcon, tags, still, highlights, bullets, table, socialLinks, initNav, initReveal };
+  return { $, esc, ICONS, placeholder, skillIcon, orgMark, tags, still, highlights, bullets, table, socialLinks, initNav, initReveal };
 })();

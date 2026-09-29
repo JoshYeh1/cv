@@ -1,6 +1,6 @@
 (() => {
   const S = window.SITE;
-  const { $, esc, placeholder, skillIcon, tags, socialLinks } = window.UI;
+  const { $, esc, placeholder, skillIcon, orgMark, tags, socialLinks } = window.UI;
 
   /* ---------- hero / static ---------- */
   document.title = `${S.name} — ${S.role}`;
@@ -65,7 +65,7 @@
       <span class="tl-date">${esc(e.date)}</span>
       <div class="tl-body">
         <div class="tl-title">
-          ${e.mark ? `<div class="org-mark" aria-hidden="true">${esc(e.mark)}</div>` : ""}
+          ${orgMark(e)}
           <div><h3>${esc(e.role)}</h3><div class="tl-org">${esc(e.org)}</div></div>
         </div>
         <ul>${e.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
@@ -82,7 +82,7 @@
   $("#edu").innerHTML = S.education
     .map(
       (e) => `<div class="edu-card reveal">
-      ${e.mark ? `<div class="org-mark" aria-hidden="true">${esc(e.mark)}</div>` : ""}
+      ${orgMark(e)}
       <div><h3>${esc(e.school)}</h3>
       <span class="tl-date">${esc(e.date)} · ${esc(e.place)}</span>
       ${e.degrees.map((d) => `<p>${esc(d)}</p>`).join("")}</div></div>`
