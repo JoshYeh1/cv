@@ -39,7 +39,7 @@ window.SITE = {
     { value: "±1°", label: "Repeatable positioning on a cryogenic goniometer", project: "goniometer" },
     { value: "997", label: "Multimodal samples in a benchmark under review at ICLR 2027", project: "vista" },
     { value: "Class 100", label: "Cleanroom fabrication of silicon photodiodes", project: "photodiode" },
-    { value: "<1 s", label: "AI scene descriptions on AR glasses, 40% faster", project: "aria" },
+    { value: "0.07 RPS", label: "Steady-state speed error under load with PID control", project: "robot" },
   ],
 
   projects: [
@@ -89,13 +89,13 @@ window.SITE = {
         { type: "image", src: "assets/img/gonio-cryo-model.jpg", caption: "Half-size, gold-plated goniometer built for the dilution refrigerator" },
         { type: "image", src: "assets/img/gonio-ese-day-poster.jpg", caption: "Presenting the project with my teammates at WashU ESE Day" },
       ],
-      links: [],
+      links: [{ label: "View code", url: "https://github.com/JoshYeh1/EE_capstone" }],
     },
     {
       id: "photodiode",
       title: "Silicon Photodiode Fabrication",
       subtitle: "Semiconductor Fabrication Lab · ESE 4361",
-      date: "Jan 2025 – May 2026",
+      date: "Jan 2026 – May 2026",
       icon: "wafer",
       tags: ["Cleanroom", "Thermal Oxidation", "Photolithography", "RIE", "Ion Implantation", "Sentaurus TCAD", "Keysight B1500A"],
       summary:
@@ -172,30 +172,8 @@ window.SITE = {
       links: [{ label: "Read the full report (PDF)", url: "assets/papers/Yeh_Wu_Autonomous_Robot_Car_Report.pdf" }],
     },
     {
-      id: "aria",
-      title: "Meta Glasses AI Assistant",
-      subtitle: "Real-time Assistive Eyewear",
-      date: "May 2025 – Jun 2025",
-      icon: "glasses",
-      tags: ["Python", "Whisper", "Qwen VLM", "Flask", "GPU Inference"],
-      summary:
-        "Wearable assistant on Meta's Aria glasses that speaks scene descriptions in under a second.",
-      problem: "Blind and low-vision users need spoken descriptions of their surroundings fast enough to act on while moving.",
-      role: "I built the end-to-end system: capture on the glasses, speech input, captioning, and spoken output.",
-      built: [
-        ["Pipeline:", "Aria camera and audio → Flask server → Whisper (speech-to-text) → Qwen (vision-language) → text-to-speech."],
-      ],
-      validation: [
-        ["Latency:", "cut captioning time 40% with GPU inference tuning and image resizing, reaching under 1 s."],
-      ],
-      media: [
-        { type: "image", src: "assets/img/aria-workstation.jpg", caption: "Meta Project Aria glasses at the development workstation" },
-        { type: "image", src: "assets/img/aria-live-capture.jpg", caption: "Live Aria RGB capture streamed to the laptop for VLM scene captioning" },
-      ],
-      links: [],
-    },
-    {
       id: "vista",
+      featured: true,
       title: "VISTA Benchmark",
       subtitle: "Research · Under review at ICLR 2027",
       date: "2025 – 2026",
@@ -252,7 +230,31 @@ window.SITE = {
         { type: "image", src: "assets/img/vista-pilot-llm-judge.png", caption: "Pilot results: LLM-judge usefulness ratings for scene descriptions and guidance" },
         { type: "image", src: "assets/img/vista-pilot-iaa.png", caption: "Pilot inter-annotator agreement (BERTScore and SBERT)" },
       ],
-      links: [],
+      links: [{ label: "View code", url: "https://github.com/JoshYeh1/VISTA" }],
+    },
+    {
+      id: "aria",
+      compact: true,
+      title: "Meta Glasses AI Assistant",
+      subtitle: "Real-time Assistive Eyewear",
+      date: "May 2025 – Jun 2025",
+      icon: "glasses",
+      tags: ["Python", "Whisper", "Qwen VLM", "Flask", "GPU Inference"],
+      summary:
+        "Wearable assistant on Meta's Aria glasses that speaks scene descriptions in under a second.",
+      problem: "Blind and low-vision users need spoken descriptions of their surroundings fast enough to act on while moving.",
+      role: "I built the end-to-end system: capture on the glasses, speech input, captioning, and spoken output.",
+      built: [
+        ["Pipeline:", "Aria camera and audio → Flask server → Whisper (speech-to-text) → Qwen (vision-language) → text-to-speech."],
+      ],
+      validation: [
+        ["Latency:", "cut captioning time 40% with GPU inference tuning and image resizing, reaching under 1 s."],
+      ],
+      media: [
+        { type: "image", src: "assets/img/aria-workstation.jpg", caption: "Meta Project Aria glasses at the development workstation" },
+        { type: "image", src: "assets/img/aria-live-capture.jpg", caption: "Live Aria RGB capture streamed to the laptop for VLM scene captioning" },
+      ],
+      links: [{ label: "View code", url: "https://github.com/JoshYeh1/aria_ai_caption" }],
     },
   ],
 

@@ -55,13 +55,13 @@
   $("#project-grid").innerHTML = S.projects
     .map(
       (p) => `
-    <a class="project-card reveal${p.featured ? " featured" : ""}" href="project.html?id=${esc(p.id)}">
+    <a class="project-card reveal${p.featured ? " featured" : ""}${p.compact ? " compact" : ""}" href="project.html?id=${esc(p.id)}">
       <div class="project-cover">${cover(p)}</div>
       <div class="project-info">
         <div class="project-meta"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
         <h3>${esc(p.title)}</h3>
         <p>${esc(p.summary)}</p>
-        ${tags(p.tags)}
+        ${p.compact ? "" : tags(p.tags)}
         <span class="project-more">View project <span>→</span></span>
       </div>
     </a>`

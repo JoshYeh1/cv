@@ -165,6 +165,12 @@ h2 { font-size: clamp(28px, 3.6vw, 36px); letter-spacing: -0.025em; font-weight:
 .project-card:hover .project-more span { transform: translateX(3px); }
 
 .project-card.featured { grid-column: 1 / -1; flex-direction: row; }
+.project-card.compact { grid-column: 1 / -1; flex-direction: row; align-items: stretch; }
+.project-card.compact .project-cover { flex: 0 0 220px; aspect-ratio: auto; min-height: 132px; }
+.project-card.compact .project-cover .media-count { display: none; }
+.project-card.compact .project-info { justify-content: center; padding: 18px 24px; gap: 4px; }
+.project-card.compact h3 { font-size: 18px; }
+.project-card.compact p { font-size: 14.5px; }
 .project-card.featured .project-cover { flex: 0 0 56%; aspect-ratio: auto; min-height: 360px; }
 .project-card.featured .project-info { justify-content: center; padding: 36px; }
 .project-card.featured h3 { font-size: 27px; }
@@ -344,6 +350,8 @@ h2 { font-size: clamp(28px, 3.6vw, 36px); letter-spacing: -0.025em; font-weight:
   .stat:nth-child(3) { border-left: 0; }
   .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
   .project-card.featured { flex-direction: column; }
+  .project-card.compact .project-cover { flex-basis: 130px; min-height: 0; }
+  .project-card.compact .project-info { padding: 14px 16px; }
   .project-card.featured .project-cover { flex: none; aspect-ratio: 16/10; min-height: 0; }
   .project-card.featured .project-info { padding: 22px 24px 24px; }
   .section { padding-top: 88px; }
