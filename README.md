@@ -19,12 +19,15 @@ python3 -m http.server 8080
 ```
 Then open http://localhost:8080.
 
-## Deploy (GitHub Pages)
-1. Create a public repo named **`JoshYeh1.github.io`** on GitHub.
-2. Push this folder to it:
-   ```bash
-   git remote add origin https://github.com/JoshYeh1/JoshYeh1.github.io.git
-   git push -u origin main
-   ```
-3. On GitHub, go to Settings → Pages and set Source to "Deploy from a branch", branch `main`, folder `/ (root)`.
-4. The site goes live at **https://joshyeh1.github.io** within a minute or two. Every later push updates it.
+## Deploy (GitHub Pages project site)
+This site is served as a **project site** at **https://joshyeh1.github.io/cv/**, separate from the
+existing user site in the `joshyeh1.github.io` repo. That repo stays untouched.
+
+1. Create a new **public** repo named **`cv`** (the repo name becomes the URL path).
+2. Upload or push the contents of this folder to the repo root (`index.html` must be at the top level).
+3. In the repo, go to Settings → Pages → Build and deployment and set Source to "Deploy from a branch", branch `main`, folder `/ (root)`.
+4. Live at **https://joshyeh1.github.io/cv/** within a minute or two.
+
+All asset paths are relative, so the site works under `/cv/` (or any repo name) without changes.
+Don't add a `CNAME` file to this repo. A project site automatically uses the custom domain of the
+user site, if the user site has one.
