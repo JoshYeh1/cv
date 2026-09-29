@@ -60,7 +60,7 @@
   const nVideo = p.media.filter((m) => m.type !== "image").length;
   const nPhoto = p.media.length - nVideo;
   const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
-  const mediaCount = [nPhoto && plural(nPhoto, "photo"), nVideo && plural(nVideo, "video")].filter(Boolean).join(" · ");
+  const mediaCount = [nPhoto && plural(nPhoto, "image"), nVideo && plural(nVideo, "video")].filter(Boolean).join(" · ");
 
   const prev = S.projects[(index - 1 + S.projects.length) % S.projects.length];
   const next = S.projects[(index + 1) % S.projects.length];
