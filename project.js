@@ -40,14 +40,18 @@
   const sections = (p.sections || [])
     .map(
       (sec) => `
-      <section class="pp-block pp-sub reveal">
+      <section class="pp-sub reveal">
         <div class="pp-block-head">
           <h2>${esc(sec.title)}</h2>
           ${sec.meta ? `<div class="sub-meta">${esc(sec.meta)}</div>` : ""}
         </div>
-        ${sec.text ? `<p class="pp-text">${esc(sec.text)}</p>` : ""}
-        ${highlights(sec.highlights)}
-        ${bullets(sec.bullets)}
+        <div class="pp-cols pp-cols-tight">
+          <div>
+            ${sec.text ? `<p class="pp-text">${esc(sec.text)}</p>` : ""}
+            ${highlights(sec.highlights)}
+          </div>
+          <div>${bullets(sec.bullets)}</div>
+        </div>
         ${table(sec.table)}
       </section>`
     )
@@ -69,34 +73,37 @@
     <article class="pp">
       <a class="pp-back" href="index.html#projects">← All projects</a>
 
-      <header class="pp-header">
-        <div class="project-meta"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
-        <h1>${esc(p.title)}</h1>
-        <p class="pp-summary">${esc(p.summary)}</p>
-        ${tags(p.tags)}
-      </header>
+      <div class="pp-top">
+        <header class="pp-header">
+          <div class="project-meta"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
+          <h1>${esc(p.title)}</h1>
+          <p class="pp-summary">${esc(p.summary)}</p>
+          ${tags(p.tags)}
+          ${highlights(p.highlights)}
+          ${links}
+        </header>
+        <figure class="pp-hero-wrap">
+          <div class="pp-hero">${heroMedia(p.media[0])}</div>
+          ${p.media[0] && p.media[0].caption ? `<figcaption class="pp-hero-caption">${esc(p.media[0].caption)}</figcaption>` : ""}
+        </figure>
+      </div>
 
-      <div class="pp-hero">${heroMedia(p.media[0])}</div>
-      ${p.media[0] && p.media[0].caption ? `<p class="pp-hero-caption">${esc(p.media[0].caption)}</p>` : ""}
-
-      ${highlights(p.highlights)}
-
-      <section class="pp-block reveal">
-        <div class="pp-block-head"><h2>Overview</h2></div>
-        <p class="pp-text">${esc(p.description || p.summary)}</p>
-        ${links}
-      </section>
-
-      <section class="pp-block reveal">
-        <div class="pp-block-head"><h2>What I did</h2></div>
-        ${bullets(p.bullets)}
-        ${table(p.table)}
-      </section>
+      <div class="pp-cols reveal">
+        <section class="pp-block">
+          <div class="pp-block-head"><h2>Overview</h2></div>
+          <p class="pp-text">${esc(p.description || p.summary)}</p>
+        </section>
+        <section class="pp-block">
+          <div class="pp-block-head"><h2>What I did</h2></div>
+          ${bullets(p.bullets)}
+        </section>
+      </div>
+      ${table(p.table)}
 
       ${sections}
 
       ${p.media.length > 1 ? `
-      <section class="pp-block reveal">
+      <section class="pp-block pp-gallery-block reveal">
         <div class="pp-block-head"><h2>Gallery</h2><div class="sub-meta">${mediaCount} · click to enlarge</div></div>
         <div class="pp-gallery">${gallery}</div>
       </section>` : ""}

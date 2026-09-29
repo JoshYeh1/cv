@@ -224,36 +224,50 @@ h2 { font-size: clamp(28px, 3.6vw, 36px); letter-spacing: -0.025em; font-weight:
 .footer a:hover { color: var(--text); }
 
 /* ---------- project page ---------- */
-.pp { max-width: 920px; margin: 0 auto; padding: 110px 0 40px; }
-.pp-back { display: inline-block; font-size: 14.5px; color: var(--muted); margin-bottom: 28px; transition: color .2s; }
+.project-page main { max-width: 1248px; }
+.project-page .nav, .project-page .footer { padding-left: max(24px, calc((100vw - 1200px) / 2)); padding-right: max(24px, calc((100vw - 1200px) / 2)); }
+.project-page .footer { max-width: none; }
+.pp { max-width: 1200px; margin: 0 auto; padding: 96px 0 40px; }
+.pp-back { display: inline-block; font-size: 14px; color: var(--muted); margin-bottom: 22px; transition: color .2s; }
 .pp-back:hover { color: var(--text); }
-.pp-header { max-width: 760px; }
-.pp-header .project-meta { justify-content: flex-start; gap: 4px 14px; }
-.pp-header .project-meta .sub::after { content: "·"; margin-left: 14px; color: var(--faint); }
-.pp h1 { font-size: clamp(36px, 5.5vw, 56px); line-height: 1.05; letter-spacing: -0.04em; font-weight: 700; margin: 10px 0 16px; }
-.pp-summary { font-size: 20px; line-height: 1.5; color: var(--muted); }
-.pp-header .tags { margin-top: 20px; padding-top: 0; }
 
-.pp-hero { margin-top: 40px; border-radius: var(--radius); overflow: hidden; background: var(--surface-2); border: 1px solid var(--border); }
-.pp-hero img, .pp-hero video { width: 100%; max-height: 72vh; object-fit: contain; margin: 0 auto; background: var(--surface-2); }
+/* Top: text on the left, main media on the right */
+.pp-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+.pp-header .project-meta { flex-direction: column; align-items: flex-start; gap: 2px; }
+.pp h1 { font-size: clamp(32px, 3.6vw, 44px); line-height: 1.08; letter-spacing: -0.035em; font-weight: 700; margin: 10px 0 14px; }
+.pp-summary { font-size: 17.5px; line-height: 1.55; color: var(--muted); }
+.pp-header .tags { margin-top: 18px; padding-top: 0; }
+.pp-header .highlights { margin-top: 24px; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.pp-header .hl { padding: 12px 14px; }
+.pp-header .hl-value { font-size: 22px; }
+.pp-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+
+.pp-hero-wrap { margin: 0; position: sticky; top: 84px; }
+.pp-hero { border-radius: var(--radius); overflow: hidden; background: var(--surface-2); border: 1px solid var(--border); display: grid; place-items: center; }
+.pp-hero img, .pp-hero video { width: 100%; height: auto; max-height: min(66vh, 600px); object-fit: contain; display: block; }
 .pp-hero video { background: #000; }
 .pp-hero iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
 .pp-hero-btn { display: block; width: 100%; border: 0; padding: 0; background: none; cursor: zoom-in; }
-.pp-hero-caption { font-size: 14px; color: var(--faint); margin-top: 10px; }
+.pp-hero-caption { font-size: 13.5px; color: var(--faint); margin-top: 10px; line-height: 1.5; }
 
-.pp > .highlights { margin-top: 36px; }
+/* Overview + What I did side by side */
+.pp-cols { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; margin-top: 64px; }
+.pp-cols-tight { margin-top: 0; }
+.pp-block-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; padding-bottom: 12px; margin-bottom: 18px; border-bottom: 1px solid var(--border); }
+.pp-block-head h2 { font-size: 22px; letter-spacing: -0.02em; font-weight: 600; }
+.pp-text { font-size: 16.5px; line-height: 1.7; color: var(--text); }
+.pp .bullets { gap: 10px; margin-top: 0; }
+.pp .bullets li { font-size: 15.5px; line-height: 1.6; color: var(--text); padding-left: 20px; }
+.pp .bullets li::before { top: 0.7em; width: 6px; height: 6px; background: var(--accent); }
+.pp-sub { margin-top: 64px; }
+.pp-sub .highlights { margin-top: 20px; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.pp-sub .hl { padding: 12px 14px; }
+.pp-sub .hl-value { font-size: 22px; }
+.pp > .table-wrap, .pp-sub .table-wrap { margin-top: 28px; }
 
-.pp-block { margin-top: 64px; }
-.pp-block-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; padding-bottom: 14px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
-.pp-block-head h2 { font-size: 24px; letter-spacing: -0.02em; font-weight: 600; }
-.pp-text { font-size: 17.5px; line-height: 1.7; color: var(--text); max-width: 760px; }
-.pp .bullets { gap: 12px; margin-top: 0; }
-.pp .bullets li { font-size: 16.5px; line-height: 1.65; color: var(--text); padding-left: 22px; }
-.pp .bullets li::before { top: 0.72em; width: 6px; height: 6px; background: var(--accent); }
-.pp-sub .highlights { margin: 22px 0 26px; }
-.pp-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
-
-.pp-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 20px; }
+/* Gallery: dense grid; captions clamp to two lines (full text in the viewer) */
+.pp-gallery-block { margin-top: 64px; }
+.pp-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 22px 16px; }
 .pp-tile { margin: 0; }
 .pp-tile-media {
   position: relative; display: block; width: 100%; aspect-ratio: 4/3; padding: 0; border: 1px solid var(--border);
@@ -263,14 +277,17 @@ h2 { font-size: clamp(28px, 3.6vw, 36px); letter-spacing: -0.025em; font-weight:
 .pp-tile-media.is-diagram img { object-fit: contain; background: #fff; padding: 6%; }
 .pp-tile-media:hover img, .pp-tile-media:hover video { transform: scale(1.03); }
 .pp-tile-media:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.pp-tile figcaption { font-size: 14px; line-height: 1.5; color: var(--muted); margin-top: 10px; }
+.pp-tile figcaption {
+  font-size: 13px; line-height: 1.45; color: var(--muted); margin-top: 8px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
 
-.pp-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 80px; }
-.pp-pager a { display: flex; flex-direction: column; gap: 4px; padding: 20px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); transition: border-color .2s, box-shadow .2s; }
+.pp-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 72px; }
+.pp-pager a { display: flex; flex-direction: column; gap: 4px; padding: 18px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); transition: border-color .2s, box-shadow .2s; }
 .pp-pager a:hover { border-color: var(--border-strong); box-shadow: var(--shadow); }
 .pp-pager a.next { text-align: right; }
-.pp-pager span { font-size: 13.5px; color: var(--faint); }
-.pp-pager strong { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+.pp-pager span { font-size: 13px; color: var(--faint); }
+.pp-pager strong { font-size: 16.5px; font-weight: 600; letter-spacing: -0.01em; }
 
 /* ---------- lightbox ---------- */
 .lightbox {
@@ -327,6 +344,10 @@ h2 { font-size: clamp(28px, 3.6vw, 36px); letter-spacing: -0.025em; font-weight:
   .project-card.featured .project-cover { flex: none; aspect-ratio: 16/10; min-height: 0; }
   .project-card.featured .project-info { padding: 22px 24px 24px; }
   .section { padding-top: 88px; }
+  .pp-top, .pp-cols { grid-template-columns: 1fr; gap: 32px; }
+  .pp-hero-wrap { position: static; }
+  .pp-hero img, .pp-hero video { height: auto; max-height: 60vh; }
+  .pp-cols { margin-top: 48px; }
 }
 @media (max-width: 640px) {
   .stat { padding: 18px 16px 16px; gap: 4px; }
@@ -336,9 +357,8 @@ h2 { font-size: clamp(28px, 3.6vw, 36px); letter-spacing: -0.025em; font-weight:
   .tl-card { grid-template-columns: 1fr; }
   .tl-date { padding-top: 0; margin-bottom: 10px; }
   .tl-body > ul, .tl-body > .tl-links { margin-left: 0; }
-  .pp { padding-top: 90px; }
-  .pp-summary { font-size: 18px; }
-  .pp-gallery { grid-template-columns: 1fr; }
+  .pp { padding-top: 84px; }
+  .pp-gallery { grid-template-columns: repeat(2, 1fr); gap: 16px 12px; }
   .pp-pager { grid-template-columns: 1fr; }
   .pp-pager a.next { text-align: left; }
   .lightbox { grid-template-columns: 1fr; }
