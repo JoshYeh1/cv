@@ -28,7 +28,7 @@ window.SITE = {
   ],
 
   stats: [
-    { value: "4", label: "Major hardware & systems projects" },
+    { value: "5", label: "Hardware, systems & research projects" },
     { value: "<1s", label: "Scene-description latency on AR glasses" },
     { value: "Class 100", label: "Cleanroom device fabrication" },
   ],
@@ -36,6 +36,7 @@ window.SITE = {
   projects: [
     {
       id: "goniometer",
+      featured: true,
       title: "Two-Axis Cryogenic Goniometer",
       subtitle: "Capstone · Graphene Experiment",
       date: "Jan 2025 – May 2026",
@@ -48,7 +49,11 @@ window.SITE = {
         "Developed and tested motor-control electronics using stepper drivers, custom PCBs, and SCPI-based controls.",
         "Analyzed and mitigated stepper motor error sources, including dead-reckoning drift, step loss, and backlash.",
       ],
-      media: [],
+      media: [
+        { type: "image", src: "assets/img/hall-amp-layout.png", caption: "Hall Amp V2: two-layer PCB layout in EasyEDA" },
+        { type: "image", src: "assets/img/hall-amp-pcb.jpg", caption: "Assembled Hall amplifier PCB under test" },
+        { type: "image", src: "assets/img/hall-amp-breadboard.jpg", caption: "Breadboard prototype of the op-amp signal chain" },
+      ],
       links: [],
     },
     {
@@ -65,7 +70,9 @@ window.SITE = {
         "Maintained industry-standard wafer runsheets and digital lab notebooks documenting process parameters.",
         "Characterized fabricated devices using electrical test equipment and analyzed measurement results.",
       ],
-      media: [],
+      media: [
+        { type: "image", src: "assets/img/photodiode-wafer.jpg", caption: "Finished silicon wafer with patterned photodiode die" },
+      ],
       links: [],
     },
     {
@@ -83,7 +90,26 @@ window.SITE = {
         "Reduced captioning latency by 40% through GPU inference optimization and efficient image resizing.",
       ],
       media: [],
-      links: [],
+      links: [{ label: "Related: VISTA benchmark (ICLR 2027 submission)", url: "https://openreview.net/forum?id=4Z5rN19Yhu" }],
+    },
+    {
+      id: "vista",
+      title: "VISTA Benchmark",
+      subtitle: "Research · Under review at ICLR 2027",
+      date: "2025 – 2026",
+      icon: "vista",
+      tags: ["Multimodal", "Egocentric", "Project Aria", "VLM Evaluation", "Label Studio", "Hugging Face"],
+      summary:
+        "A multimodal egocentric benchmark of goal-oriented assistance for blind and low-vision users, captured on Meta Project Aria glasses.",
+      description:
+        "VISTA contains 997 samples captured with Meta Project Aria glasses. Each sample has five synchronized modalities (vision, audio, eye tracking, inertial signals, and spatial tracking) and three annotation formats, covering ten categories of goal-oriented assistive tasks. We run zero-shot evaluations of representative vision-language models and build a lightweight multimodal world-model baseline that uses all five modalities. Current models can often describe egocentric scenes but still struggle to give context-aware, goal-directed guidance.",
+      bullets: [
+        "Co-built the dataset at the Harvard Ophthalmology AI Lab: 997 samples × 5 synchronized sensor modalities.",
+        "Managed and trained a team of annotators and wrote the annotation guidelines in Label Studio.",
+        "Designed annotation tools and benchmarking scripts; hosted data via Hugging Face and GitHub.",
+      ],
+      media: [],
+      links: [{ label: "OpenReview submission", url: "https://openreview.net/forum?id=4Z5rN19Yhu" }],
     },
     {
       id: "robot",
@@ -99,7 +125,11 @@ window.SITE = {
         "Coded vision-based navigation using a camera to detect obstacles and make real-time directional adjustments.",
         "Developed a PID controller to maintain target speed by adjusting motor PWM signals.",
       ],
-      media: [],
+      media: [
+        { type: "image", src: "assets/img/robot-timed-run.jpg", caption: "Timed autonomous run" },
+        { type: "image", src: "assets/img/robot-camera-feed.jpg", caption: "Onboard camera feed and servo/pin configuration over SSH" },
+        { type: "image", src: "assets/img/robot-car.jpg", caption: "The Raspberry Pi car in motion" },
+      ],
       links: [],
     },
   ],
@@ -124,6 +154,7 @@ window.SITE = {
         "Managed and trained a team of annotators, creating guidelines for high-quality annotations in Label Studio.",
         "Designed annotation tools and benchmarking scripts; hosted data via Hugging Face and GitHub.",
       ],
+      links: [{ label: "VISTA · ICLR 2027 submission", url: "https://openreview.net/forum?id=4Z5rN19Yhu" }],
     },
     {
       role: "Electrical Engineering Grader",

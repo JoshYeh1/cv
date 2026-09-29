@@ -27,6 +27,11 @@
       <path d="M52 58c4-4 12-4 16 0M14 54 6 46M106 54l8-8"/>
       <path d="M33 38v-6M87 38v-6M60 30v-8" opacity=".6"/><path d="M40 92q10 8 20 0t20 0" opacity=".7"/>
       <path d="M30 100q15 10 30 0t30 0" opacity=".4"/></svg>`,
+    vista: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="60" cy="60" r="16"/><circle cx="60" cy="60" r="6" fill="currentColor"/>
+      <path d="M20 60q40-40 80 0q-40 40-80 0"/>
+      <path d="M14 30h14M14 38h9M92 30h14M97 38h9M14 90h14M14 82h9M92 90h14M97 82h9" opacity=".55"/>
+      <path d="M60 16v10M60 94v10" opacity=".55" stroke-dasharray="2 3"/></svg>`,
     robot: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
       <rect x="26" y="44" width="68" height="36" rx="6"/><rect x="42" y="30" width="36" height="14" rx="3"/>
       <circle cx="60" cy="37" r="4" fill="currentColor"/><circle cx="38" cy="86" r="10"/><circle cx="82" cy="86" r="10"/>
@@ -85,7 +90,7 @@
   $("#project-grid").innerHTML = S.projects
     .map(
       (p, i) => `
-    <article class="project-card reveal" tabindex="0" data-index="${i}" style="transition-delay:${(i % 2) * 80}ms">
+    <article class="project-card reveal${p.featured ? " featured" : ""}" tabindex="0" data-index="${i}">
       <div class="project-cover">${cover(p)}</div>
       <div class="project-info">
         <div class="project-meta mono"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
@@ -106,6 +111,7 @@
       <div class="tl-head"><h3>${esc(e.role)}</h3><span class="tl-date mono">${esc(e.date)}</span></div>
       <div class="tl-org">${esc(e.org)}</div>
       <ul>${e.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
+      ${e.links ? `<div class="tl-links">${e.links.map((l) => `<a class="mono" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
     </div></li>`
     )
     .join("");
