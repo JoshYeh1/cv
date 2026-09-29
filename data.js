@@ -42,14 +42,14 @@ window.SITE = {
       id: "goniometer",
       featured: true,
       title: "Two-Axis Cryogenic Goniometer",
-      subtitle: "Capstone · Software & Systems Lead",
-      date: "Jan 2025 – May 2026",
+      subtitle: "Capstone → Henriksen Lab · Software & Systems Lead",
+      date: "Jan 2026 – Present",
       icon: "gonio",
       tags: ["Arduino C++", "Stepper Motors", "DRV8825", "Microstepping", "SCPI", "EEPROM", "Hall Sensors", "Op-Amp Design", "PCB Design"],
       summary:
         "A motorized two-axis goniometer that rotates graphene samples to precise angles inside a dilution refrigerator, where rotating the sample in a strong magnetic field reveals quantum Hall physics.",
       description:
-        "Our client, Dr. Erik Henriksen, studies graphene at millikelvin temperatures in strong magnetic fields, and rotating the sample relative to the field separates spin and orbital effects. On a team of three, I led software and systems integration for a 2× scale prototype with an aluminum strut frame, 3D-printed motor housings, and a belt-driven dual-pulley stage. The firmware converts user-selected angles into coordinated motor motion, even though the gearbox couples the two axes. It also holds the wires within safe limits and exposes everything through a SCPI command interface. With the prototype working, a half-size, gold-plated version has been built for the fridge.",
+        "Our client, Dr. Erik Henriksen, studies graphene at millikelvin temperatures in strong magnetic fields, and rotating the sample relative to the field separates spin and orbital effects. On a team of three, I led software and systems integration for a 2× scale prototype with an aluminum strut frame, 3D-printed motor housings, and a belt-driven dual-pulley stage. The firmware converts user-selected angles into coordinated motor motion, even though the gearbox couples the two axes. It also holds the wires within safe limits and exposes everything through a SCPI command interface. With the prototype working, a half-size, gold-plated version has been built for the fridge. The capstone ran from January to April 2026, and I've kept developing the system in the Henriksen Lab since then, working toward installing it in the fridge.",
       highlights: [
         { value: "360°", label: "Full rotation on both axes" },
         { value: "±1°", label: "Repeatable positioning error" },
@@ -62,7 +62,7 @@ window.SITE = {
         "Wrote Arduino C++ firmware with 1/32 microstepping on DRV8825 drivers, acceleration/deceleration ramps, limit-switch homing, and EEPROM position recovery after power loss.",
         "Built a SCPI-style command set (*IDN?, MOVE:ABS, HOME, CONF:ORIENTMODE, …) so the system works like standard lab instrumentation.",
         "Diagnosed Kevlar-string slippage that masked software errors and moved the drivetrain to bearings and belts. Also analyzed dead-reckoning drift, step loss, and backlash.",
-        "Designed a differential amplifier and the Hall Amp V2 PCB to condition 3-axis Hall-sensor signals for future closed-loop orientation sensing.",
+        "Did most of the design of the Hall Amp V2 PCB, a differential-amplifier board that conditions 3-axis Hall-sensor signals for closed-loop orientation sensing.",
       ],
       media: [
         { type: "image", src: "assets/img/gonio-motor-housings.jpg", caption: "Stepper motors in 3D-printed housings on the strut frame, belt-coupled to the stage below" },
