@@ -49,7 +49,9 @@ window.UI = (() => {
   const highlights = (list) =>
     list ? `<div class="highlights">${list.map((h) => `<div class="hl"><div class="hl-value">${esc(h.value)}</div><div class="hl-label">${esc(h.label)}</div></div>`).join("")}</div>` : "";
 
-  const bullets = (list) => (list ? `<ul class="bullets">${list.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>` : "");
+  // A bullet is a string, or [lead, detail] to render a bold lead-in for easy scanning
+  const bullets = (list) =>
+    list ? `<ul class="bullets">${list.map((b) => Array.isArray(b) ? `<li><strong>${esc(b[0])}</strong> ${esc(b[1])}</li>` : `<li>${esc(b)}</li>`).join("")}</ul>` : "";
 
   const table = (t) =>
     t ? `<div class="table-wrap"><table>

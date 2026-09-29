@@ -20,7 +20,7 @@ window.SITE = {
   role: "Electrical Engineer",
   focus: "Hardware · Controls · Systems Integration",
   tagline:
-    "I work on hardware, controls, and test, and I like owning a system end to end: from requirements and first prototypes through integration, validation, and deployment.",
+    "Hardware, controls, and test, with a focus on taking systems from first prototype through integration and validation.",
   location: "Boston, MA",
   email: "j.y.yeh@email.wustl.edu",
   github: "https://github.com/JoshYeh1",
@@ -29,9 +29,8 @@ window.SITE = {
   photo: "assets/img/headshot.jpg",        // optional — falls back to initials
 
   about: [
-    "I'm an Electrical Engineering student at Washington University in St. Louis, finishing a B.S. in EE alongside an M.Eng. in Engineering Management, with an earlier degree in physics from Pepperdine.",
-    "Most of my work lives where electronics meet the physical world: motion-control firmware and sensor electronics for a cryogenic goniometer, a silicon photodiode built in the cleanroom, and closed-loop control on a small autonomous car. These projects cross disciplines (firmware, circuits, mechanics, and measurement all in one system), so I've gotten used to pinning down requirements, planning how each piece will be tested, documenting as I go, and carrying a prototype through to integration.",
-    "I'm looking for full-time roles in electrical, controls, test, and systems integration engineering.",
+    "I'm finishing a B.S. in Electrical Engineering and an M.Eng. in Engineering Management at WashU, after a physics degree from Pepperdine.",
+    "My projects sit where electronics meet the physical world: cryogenic motion control, cleanroom device fabrication, and closed-loop robotics. They're multidisciplinary by nature, so I'm used to setting requirements, planning the testing, and carrying a prototype through integration.",
   ],
 
 
@@ -53,22 +52,20 @@ window.SITE = {
       icon: "gonio",
       tags: ["Arduino C++", "Stepper Motors", "DRV8825", "Microstepping", "SCPI", "EEPROM", "Hall Sensors", "Op-Amp Design", "PCB Design"],
       summary:
-        "A motorized two-axis goniometer that rotates graphene samples to precise angles inside a dilution refrigerator, where rotating the sample in a strong magnetic field reveals quantum Hall physics.",
-      problem: "Rotating a graphene sample in a strong magnetic field reveals how its charge carriers respond to field direction, but the rotation has to happen at millikelvin temperatures, in vacuum, without adding heat or twisting the sample's wiring. The client needed a system that turns a requested orientation into safe, precise two-axis motion.",
-      role: "I was the software and systems integration lead on a three-person capstone team for Dr. Erik Henriksen (Physics). I owned the motion-control firmware and the kinematics behind it, brought the electronics, drivetrain, and user interface together into a working 2× scale prototype, and did most of the design of the Hall-sensor amplifier PCB. Since the capstone ended in April 2026, I've continued the work in the Henriksen Lab, preparing the system for installation in the dilution refrigerator.",
+        "Two-axis motion control for rotating graphene samples inside a dilution refrigerator, built as a capstone and now continuing in the Henriksen Lab.",
+      problem: "Rotating graphene in a strong magnetic field reveals how its electrons respond to field direction. The rotation has to happen at millikelvin temperatures, in vacuum, without adding heat or twisting the sample wiring.",
+      role: "Software & systems integration lead on a 3-person team. I owned the firmware and kinematics, integrated the full prototype, and did most of the Hall-sensor PCB design. I'm continuing it in the Henriksen Lab toward fridge installation.",
       built: [
-        "Derived the coupled kinematics between motor angles {α, β} and sample orientation {Ψ, ω}. The gearbox makes Ψ rotation also drive ω, so the axes can't be treated independently. I also added a field-reference mode {θ, φ} at the client's request.",
-        "Replaced two-phase motion with a single-phase “skip-step” algorithm: the motor with fewer steps skips at a computed interval, so both axes start and finish together along a near-direct path.",
-        "Wrote Arduino C++ firmware with 1/32 microstepping on DRV8825 drivers, acceleration/deceleration ramps, limit-switch homing, and EEPROM position recovery after power loss.",
-        "Built a SCPI-style command set (*IDN?, MOVE:ABS, HOME, CONF:ORIENTMODE, …) so the goniometer can be controlled like standard lab instrumentation.",
-        "Did most of the design of the Hall Amp V2 PCB, a differential-amplifier board that conditions 3-axis Hall-sensor signals for closed-loop orientation sensing.",
+        ["Coupled kinematics.", "The gearbox links the two axes, so I derived the motor-to-sample angle relations instead of driving them independently."],
+        ["Skip-step motion.", "Both motors start and stop together along a near-direct path, replacing a slower two-phase move."],
+        ["Firmware.", "Arduino C++ with 1/32 microstepping (DRV8825), accel ramps, limit-switch homing, and EEPROM position recovery."],
+        ["SCPI interface.", "Lab-instrument-style commands (*IDN?, MOVE:ABS, HOME…)."],
+        ["Hall Amp V2 PCB.", "Differential-amplifier board for 3-axis Hall-sensor orientation feedback."],
       ],
       validation: [
-        "Tested against three acceptance criteria: full 360° rotation on both axes without twisting the wires, repeatable positioning within ±1°, and long-duration runs with no noticeable drift.",
-        "Separated mechanical faults from firmware faults: traced motion errors to Kevlar-string slippage and moved the drivetrain to bearings and belts so the firmware could be verified on its own.",
-        "Analyzed stepper error sources (dead-reckoning drift, step loss, and backlash) and enforced ±180° limits to protect the sample wiring.",
-        "Bench-tested the Hall-sensor signal chain with the differential amplifier, using series resistors to simulate the sensor terminals.",
-        "Evaluating cryogenic compatibility, thermal load (motors energized only while moving), mechanical stability, and wiring strain for installation in the fridge.",
+        ["Acceptance tests:", "360° on both axes, ±1° repeatability, no drift over long runs."],
+        ["Root cause:", "traced motion errors to string slippage and switched to a belt drive so firmware could be verified on its own."],
+        ["Cryo readiness:", "evaluating thermal load, wiring strain, and mechanical stability for the fridge."],
       ],
       highlights: [
         { value: "360°", label: "Full rotation on both axes" },
@@ -102,20 +99,19 @@ window.SITE = {
       icon: "wafer",
       tags: ["Cleanroom", "Thermal Oxidation", "Photolithography", "RIE", "Ion Implantation", "Sentaurus TCAD", "Keysight B1500A"],
       summary:
-        "Designed, fabricated, simulated, and tested silicon p–n photodiodes in a Class 100/1000 cleanroom, from thermal oxidation to aluminum contacts.",
-      problem: "Take a bare silicon wafer to a working p–n photodiode: design the process, fabricate it in a teaching cleanroom, predict its behavior in simulation, and measure whether the finished device actually converts light to current.",
-      role: "This was an individual lab project (ESE 4361). I carried out the cleanroom process flow and kept the wafer runsheets and lab notebook. I also built a Sentaurus TCAD model of the same process, ran the electrical and optical tests, and wrote the IEEE-style report, including a production cost model.",
+        "Designed, fabricated, simulated, and tested silicon p–n photodiodes in a Class 100/1000 cleanroom.",
+      problem: "Take a bare silicon wafer to a working photodiode, and predict and measure how well it turns light into current.",
+      role: "Individual lab project (ESE 4361). I ran the process flow and runsheets, built the TCAD model, tested the devices, and wrote the report.",
       built: [
-        "Ran the process flow: thermal oxidation, photolithography, reactive ion etching, boron ion implantation (off-site), annealing, and aluminum back-end contacts.",
-        "Grew a 285.3 nm thermal oxide (300 nm target) with a 10 h dry oxidation at 1100 °C.",
-        "Modeled the full process in Sentaurus TCAD (SProcess + SDevice): 100 keV, 1×10¹³ cm⁻² boron implant, with 10 / 100 / 1000 keV cases compared (junction depth 2.14–3.61 µm) and a simulated dark current of about 4 fA at −5 V.",
-        "Built a production cost model from tool rates and the runsheet: ≈ $2,055 per wafer, ≈ $4.11 per photodiode.",
+        ["Process flow.", "Thermal oxidation, lithography, RIE, boron implant (off-site), anneal, and aluminum contacts."],
+        ["Thermal oxide.", "285 nm grown against a 300 nm target (10 h at 1100 °C)."],
+        ["Sentaurus TCAD model.", "Simulated the full process; compared 10/100/1000 keV implants and predicted ~4 fA dark current."],
+        ["Cost model.", "≈ $2,055 per wafer, ≈ $4.11 per photodiode."],
       ],
       validation: [
-        "Verified oxide thickness on a Woollam α-SE ellipsometer before patterning.",
-        "Root-caused a complete oxide over-etch during RIE to photoresist adhesion and hard-bake issues, and specified tighter bake, descum, and etch-time control for the next run.",
-        "Measured dark and illuminated I–V curves on a probe station with a Keysight B1500A, and responsivity at 405 / 520 / 635 nm with a Thorlabs PM100D2 (peak 0.0226 A/W at 520 nm on a comparison die).",
-        "Compared the measurements with the simulated device and attributed the gap (low responsivity, unstable photocurrent) to contact quality, surface recombination, and process defects.",
+        ["Metrology:", "oxide thickness verified by ellipsometry."],
+        ["Failure analysis:", "traced a full oxide over-etch to photoresist adhesion and set tighter bake and etch controls."],
+        ["Device test:", "dark/illuminated I–V (Keysight B1500A) and responsivity at 3 wavelengths, with a peak of 0.0226 A/W at 520 nm."],
       ],
       highlights: [
         { value: "285 nm", label: "Thermal SiO₂ grown (300 nm target)" },
@@ -141,21 +137,19 @@ window.SITE = {
       icon: "robot",
       tags: ["Raspberry Pi", "Python", "PID Control", "HSV Color Tracking", "PWM", "Ultrasonic Sensing", "Wheel Encoder", "Servos"],
       summary:
-        "Self-driving Raspberry Pi car with camera-based color tracking, ultrasonic obstacle stopping, and closed-loop PID speed control.",
-      problem: "Make a low-cost Raspberry Pi car drive itself: hold a constant speed under load, follow a colored path, switch between targets, and stop safely before obstacles, with one processor running the camera, ultrasonic sensor, encoder, and user input at the same time.",
-      role: "This was a two-person project (ESE 205). Together we designed the control system, integrated the sensors and actuators, and ran the tuning and validation tests for each objective, then wrote them up in the final report.",
+        "Self-driving Raspberry Pi car with color tracking, ultrasonic stopping, and closed-loop PID speed control.",
+      problem: "Hold a constant speed under load, follow a colored path, and stop before obstacles, with one Raspberry Pi running every sensor at once.",
+      role: "Two-person project (ESE 205). We designed the control system, integrated the sensors, and ran the tuning and validation tests together.",
       built: [
-        "A PID speed controller on a homemade wheel encoder (photoresistor + LED, sampled at 50 Hz, speed computed at 4 Hz).",
-        "HSV color tracking: each frame is masked, blurred, and thresholded, then image moments find the target centroid, which becomes a steering and camera-swivel servo angle.",
-        "Target chaining: once the car reaches the blue object, it switches its HSV range to track and stop at a yellow one.",
-        "Ultrasonic speed scaling: motor PWM drops with distance, so the car slows smoothly and stops before obstacles.",
-        "A counter-based, non-blocking scheduler in place of sleep() calls, so the camera, ultrasonic, and keyboard tasks run concurrently in real time.",
+        ["PID speed loop", "on a homemade photoresistor wheel encoder."],
+        ["Color tracking:", "HSV mask → centroid → steering and camera servo angle, switching from blue to yellow targets."],
+        ["Ultrasonic stopping:", "motor power scales down with distance."],
+        ["Non-blocking scheduler", "so camera, sensor, and input tasks run concurrently."],
       ],
       validation: [
-        "Characterized the motor with a PWM-to-speed fit (RPS ≈ 0.0276·PWM + 2.26).",
-        "Measured step responses to 3 RPS: 1.26 s rise and 0.3 RPS steady-state error with no load; 11% overshoot and 0.07 RPS steady-state error while driving under load (Kp = 8, Ki = 1, Kd = 25).",
-        "Ran a gain study: halving Kp slowed the response and raised steady-state error, and 10× Kp overshot heavily.",
-        "Used an FFT of encoder data to confirm the 3 Hz target speed and trace noise to wheel wobble, room lighting, and a faulty encoder LED.",
+        ["Step response under load:", "11% overshoot, 0.07 RPS steady-state error; 1.26 s rise with no load."],
+        ["Gain study:", "½ Kp was sluggish and 10× Kp overshot."],
+        ["FFT of encoder data", "confirmed the 3 Hz target and pinpointed noise sources."],
       ],
       highlights: [
         { value: "1.26 s", label: "Rise time to 3 RPS (no load)" },
@@ -185,15 +179,14 @@ window.SITE = {
       icon: "glasses",
       tags: ["Python", "Whisper", "Qwen VLM", "Flask", "GPU Inference"],
       summary:
-        "Multimodal assistant on Meta's Aria glasses that speaks concise scene descriptions in under a second.",
-      problem: "Blind and low-vision users need spoken descriptions of their surroundings fast enough to act on while moving. That means capturing video and speech on wearable glasses and turning them into useful audio in well under a second.",
-      role: "I engineered the end-to-end system: capture on Meta's Project Aria glasses, speech input, vision-language captioning, and spoken output, all tied together through a server I built.",
+        "Wearable assistant on Meta's Aria glasses that speaks scene descriptions in under a second.",
+      problem: "Blind and low-vision users need spoken descriptions of their surroundings fast enough to act on while moving.",
+      role: "I built the end-to-end system: capture on the glasses, speech input, captioning, and spoken output.",
       built: [
-        "Streamed Aria camera frames and audio to a Flask server that runs the full pipeline.",
-        "Integrated Whisper for speech-to-text, Qwen as the vision-language model, and text-to-speech for spoken answers.",
+        ["Pipeline:", "Aria camera and audio → Flask server → Whisper (speech-to-text) → Qwen (vision-language) → text-to-speech."],
       ],
       validation: [
-        "Profiled end-to-end latency and cut captioning time by 40% through GPU inference optimization and more efficient image resizing, reaching sub-second scene descriptions.",
+        ["Latency:", "cut captioning time 40% with GPU inference tuning and image resizing, reaching under 1 s."],
       ],
       media: [
         { type: "image", src: "assets/img/aria-workstation.jpg", caption: "Meta Project Aria glasses at the development workstation" },
@@ -209,13 +202,13 @@ window.SITE = {
       icon: "vista",
       tags: ["Multimodal", "Egocentric", "Project Aria", "PyTorch", "Hugging Face", "VLM Evaluation", "Label Studio"],
       summary:
-        "A multimodal egocentric benchmark of goal-oriented assistance for blind and low-vision users, captured on Meta Project Aria glasses.",
-      problem: "Existing benchmarks test whether AI models can describe a scene, not whether they can guide a blind user through a task. They also ignore the audio, motion, gaze, and spatial data that wearable glasses already capture.",
-      role: "As a research assistant at the Harvard Ophthalmology AI Lab, I built the VISTA dataset on Meta Aria glasses, trained and managed the annotation team, and wrote the annotation tools and benchmarking scripts. About six months before the ICLR submission, I ran my own pilot as independent research at WashU (below).",
+        "Multimodal egocentric benchmark for assistive AI, captured on Meta Aria glasses and under review at ICLR 2027.",
+      problem: "AI benchmarks test whether models can describe a scene, not whether they can guide a blind user through a task, and they ignore the audio, motion, and gaze data that smart glasses already capture.",
+      role: "Research assistant at the Harvard Ophthalmology AI Lab: I built the dataset, trained and managed the annotators, and wrote the tooling. I ran an earlier pilot as independent research at WashU.",
       built: [
-        "Built VISTA, a vision-audio dataset for VLM benchmarking and fine-tuning, captured on Meta Aria smart glasses across ten goal-oriented assistive task categories.",
-        "Wrote the annotation guidelines and trained a team of annotators in Label Studio.",
-        "Designed annotation tools and benchmarking scripts, and hosted the data on Hugging Face and GitHub.",
+        ["Dataset:", "vision-audio recordings on Meta Aria glasses across 10 assistive task categories."],
+        ["Annotation:", "guidelines and training for the annotator team in Label Studio."],
+        ["Tooling:", "annotation tools and benchmarking scripts, with data hosted on Hugging Face and GitHub."],
       ],
       highlights: [
         { value: "997", label: "Multimodal egocentric samples" },
@@ -227,7 +220,7 @@ window.SITE = {
         {
           title: "Earlier work: independent research pilot",
           meta: "ESE 4991 · Presented at WashU ESE Day · Spring 2026",
-          text: "About six months before the ICLR submission, I ran my own pilot of VISTA as independent research. It used an earlier cut of the data and an RGB-only benchmark that I built myself. It's less complete than the final benchmark, but it's where the core finding first showed up: models describe scenes well but struggle to give actionable guidance.",
+          text: "About six months before the ICLR submission, I ran my own RGB-only pilot of VISTA. It was less complete than the final benchmark, but it's where the core finding first showed up: models describe scenes well but give weak guidance.",
           highlights: [
             { value: "1,003", label: "Raw recordings (~700 annotated)" },
             { value: "8", label: "Annotators" },
@@ -235,9 +228,9 @@ window.SITE = {
             { value: "3", label: "VLMs benchmarked" },
           ],
           bullets: [
-            "Built a custom Label Studio interface for clip- and frame-level annotation: scene descriptions, Q/A pairs, and action goals with instructions.",
-            "Measured inter-annotator agreement on 30 overlapping clips: BERTScore 0.90 (QA) and 0.88 (scene), SBERT 0.63–0.67.",
-            "Wrote an evaluation pipeline in PyTorch + Hugging Face Transformers (8 frames per clip, task-specific prompts), scored with BERTScore, QA F1, and a Qwen-2.5-7B LLM judge.",
+            ["Annotation interface:", "custom Label Studio setup for scene, Q&A, and action-goal labels."],
+            ["Quality check:", "inter-annotator BERTScore of 0.90 (QA) and 0.88 (scene) on 30 overlapping clips."],
+            ["Benchmark pipeline:", "PyTorch + Hugging Face, scored with BERTScore, QA F1, and an LLM judge."],
           ],
           table: {
             caption: "Pilot zero-shot results (RGB only; not the ICLR submission results)",
@@ -298,7 +291,6 @@ window.SITE = {
       bullets: [
         "Graded assignments and exams for Introduction to Electrical and Electronic Circuits.",
         "Applied detailed rubrics to evaluate circuit analysis, design, and problem-solving accuracy.",
-        "Reviewed a wide range of analog and digital circuit applications.",
       ],
     },
     {
@@ -310,7 +302,6 @@ window.SITE = {
       bullets: [
         "Conducted audits of active construction projects to ensure compliance and progress tracking.",
         "Organized and streamlined file management systems, improving accessibility and efficiency.",
-        "Coordinated with vendors, stakeholders, and university management to support project execution.",
       ],
     },
   ],
