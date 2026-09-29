@@ -89,8 +89,11 @@ window.SITE = {
         "Integrated Whisper (STT), Qwen (VLM), and TTS into a multimodal pipeline through a Flask server.",
         "Reduced captioning latency by 40% through GPU inference optimization and efficient image resizing.",
       ],
-      media: [],
-      links: [{ label: "Related: VISTA benchmark (ICLR 2027 submission)", url: "https://openreview.net/forum?id=4Z5rN19Yhu" }],
+      media: [
+        { type: "image", src: "assets/img/aria-workstation.jpg", caption: "Meta Project Aria glasses at the development workstation" },
+        { type: "image", src: "assets/img/aria-live-capture.jpg", caption: "Live Aria RGB capture streamed to the laptop for VLM scene captioning" },
+      ],
+      links: [],
     },
     {
       id: "vista",
@@ -109,7 +112,7 @@ window.SITE = {
         "Designed annotation tools and benchmarking scripts; hosted data via Hugging Face and GitHub.",
       ],
       media: [],
-      links: [{ label: "OpenReview submission", url: "https://openreview.net/forum?id=4Z5rN19Yhu" }],
+      links: [],
     },
     {
       id: "robot",
@@ -154,7 +157,6 @@ window.SITE = {
         "Managed and trained a team of annotators, creating guidelines for high-quality annotations in Label Studio.",
         "Designed annotation tools and benchmarking scripts; hosted data via Hugging Face and GitHub.",
       ],
-      links: [{ label: "VISTA · ICLR 2027 submission", url: "https://openreview.net/forum?id=4Z5rN19Yhu" }],
     },
     {
       role: "Electrical Engineering Grader",
