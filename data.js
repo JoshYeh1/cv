@@ -8,7 +8,8 @@
        (videos can also take poster: "assets/img/frame.jpg" and a short silent
         teaser: "assets/video/demo-teaser.mp4" that loops on the card cover)
      { type: "youtube", id:  "dQw4w9WgXcQ",                 caption: "..." }
-   Add fit: "contain" to an image to show it whole (no cropping) on the card.
+   Add fit: "contain" to an image to show it whole (no cropping) on the card,
+   or fit: "top" to crop from the top instead of the center.
    The first entry is used as the card cover. Leave `media: []` to show
    the generated schematic-style placeholder instead.
    ========================================================================= */
@@ -67,7 +68,7 @@ window.SITE = {
         { type: "image", src: "assets/img/gonio-motor-housings.jpg", caption: "Stepper motors in 3D-printed housings on the strut frame, belt-coupled to the stage below" },
         { type: "image", src: "assets/img/gonio-stage.jpg", caption: "3D-printed two-axis goniometer stage with bevel gearbox" },
         { type: "image", src: "assets/img/gonio-belt-upgrade.jpg", caption: "Prototype revision: Kevlar strings and springs replaced with bearings and belts to stop slippage" },
-        { type: "image", src: "assets/img/gonio-rotation-angles.jpg", caption: "Motor angles α, β and sample rotation angles Ψ, ω, which are coupled through the gearbox" },
+        { type: "image", src: "assets/img/gonio-rotation-angles.png", caption: "Motor angles α, β and sample rotation angles Ψ, ω, which are coupled through the gearbox" },
         { type: "image", src: "assets/img/gonio-angle-relations.png", caption: "Derived relations between motor, sample-frame, and field-frame angles" },
         { type: "image", src: "assets/img/gonio-skip-step-algorithm.png", caption: "Single-phase skip-step algorithm for coordinated two-motor motion" },
         { type: "image", src: "assets/img/gonio-scpi-interface.png", caption: "SCPI command interface with sample and magnetic-field orientation modes" },
@@ -185,7 +186,7 @@ window.SITE = {
         },
       ],
       media: [
-        { type: "image", src: "assets/img/vista-task-examples.jpg", fit: "contain", caption: "Example assistive scenarios with scene, Q&A, and action-guidance annotations (ESE Day pilot)" },
+        { type: "image", src: "assets/img/vista-task-examples.jpg", fit: "top", caption: "Example assistive scenarios, the five Aria sensor streams (RGB, audio, IMU, SLAM, eye tracking), and scene / Q&A / action-guidance annotations" },
         { type: "image", src: "assets/img/vista-aria-sensors.png", fit: "contain", caption: "Meta Project Aria Gen 1 sensor layout (RGB, SLAM & eye-tracking cameras, 7 mics, IMUs, barometer, magnetometer) used for VISTA data collection. Diagram: Meta" },
         { type: "image", src: "assets/img/vista-ese-day-poster.jpg", caption: "My independent-research poster presented at WashU ESE Day (pilot, spring 2026)" },
         { type: "image", src: "assets/img/vista-pipeline.png", caption: "Pilot pipeline: Aria capture → video/audio/IMU processing → annotation → VLM benchmarking" },
