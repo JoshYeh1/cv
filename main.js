@@ -160,6 +160,16 @@
     mediaEl.innerHTML = `<div style="position:relative"><div class="stage">${stage}</div>${nav}${m.caption ? `<div class="caption">${esc(m.caption)}</div>` : ""}</div>${thumbs}`;
   };
 
+  // highlights → bullets → table; shared by the project body and its sub-sections
+  const detail = (d) => `
+      ${d.highlights ? `<div class="highlights">${d.highlights.map((h) => `<div class="hl"><div class="hl-value">${esc(h.value)}</div><div class="hl-label">${esc(h.label)}</div></div>`).join("")}</div>` : ""}
+      ${d.bullets ? `<ul>${d.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>` : ""}
+      ${d.table ? `<div class="table-wrap"><table>
+        <caption class="mono">${esc(d.table.caption)}</caption>
+        <thead><tr>${d.table.head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead>
+        <tbody>${d.table.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
+      </table></div>` : ""}`;
+
   const openModal = (i) => {
     current = S.projects[i];
     slide = 0;
@@ -170,13 +180,14 @@
       <div class="project-meta mono"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
       <h3>${esc(p.title)}</h3>
       <p class="lead">${esc(p.description || p.summary)}</p>
-      ${p.highlights ? `<div class="highlights">${p.highlights.map((h) => `<div class="hl"><div class="hl-value">${esc(h.value)}</div><div class="hl-label">${esc(h.label)}</div></div>`).join("")}</div>` : ""}
-      <ul>${p.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
-      ${p.table ? `<div class="table-wrap"><table>
-        <caption class="mono">${esc(p.table.caption)}</caption>
-        <thead><tr>${p.table.head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead>
-        <tbody>${p.table.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
-      </table></div>` : ""}
+      ${detail(p)}
+      ${(p.sections || []).map((sec) => `
+        <section class="sub-section">
+          <h4>${esc(sec.title)}</h4>
+          ${sec.meta ? `<div class="sub-meta mono">${esc(sec.meta)}</div>` : ""}
+          ${sec.text ? `<p>${esc(sec.text)}</p>` : ""}
+          ${detail(sec)}
+        </section>`).join("")}
       ${tags(p.tags)}
       ${p.links && p.links.length ? `<div class="links">${p.links.map((l) => `<a class="btn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}`;
     modal.classList.add("open");

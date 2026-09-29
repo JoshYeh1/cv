@@ -145,32 +145,53 @@ window.SITE = {
       summary:
         "A multimodal egocentric benchmark of goal-oriented assistance for blind and low-vision users, captured on Meta Project Aria glasses.",
       description:
-        "VISTA is a 997-sample benchmark captured with Meta Project Aria glasses. Each sample has five synchronized modalities (vision, audio, eye tracking, inertial signals, and spatial tracking) and three annotation formats, covering ten categories of goal-oriented assistive tasks. We run zero-shot evaluations of representative vision-language models and build a lightweight multimodal world-model baseline that uses all five modalities. Current models can often describe egocentric scenes, but they still struggle to give context-aware, goal-directed guidance.",
+        "VISTA is a 997-sample benchmark captured with Meta Project Aria glasses. Each sample has five synchronized modalities (vision, audio, eye tracking, inertial signals, and spatial tracking) and three annotation formats, covering ten categories of goal-oriented assistive tasks. The benchmark runs zero-shot evaluations of representative vision-language models and a lightweight multimodal world-model baseline that uses all five modalities. Current models can often describe egocentric scenes, but they still struggle to give context-aware, goal-directed guidance.",
       highlights: [
         { value: "997", label: "Multimodal egocentric samples" },
+        { value: "5", label: "Synchronized sensor modalities" },
+        { value: "3", label: "Annotation formats" },
         { value: "10", label: "Assistive task categories" },
-        { value: "8", label: "Annotators trained & managed" },
-        { value: "0.90", label: "Inter-annotator BERTScore (QA)" },
       ],
       bullets: [
-        "Collected 997 samples in indoor and outdoor settings (streets, train stations, airports) across 10 task categories, including hazard detection, navigation, text reading, and social cues.",
-        "Built a custom Label Studio annotation interface, wrote the guidelines and training materials, and managed a team of 8 annotators.",
-        "Validated annotation quality with inter-annotator agreement: BERTScore 0.90 (QA) and 0.88 (scene description).",
-        "Wrote the benchmarking pipeline in PyTorch + Hugging Face Transformers and evaluated LLaVA-1.5, BLIP-2, and Qwen-VL on scene description, QA, and navigation guidance.",
-        "Showed that models caption scenes well (BERTScore ≈ 0.83–0.86) but give weak action-oriented guidance (LLM-judge ≤ 3.03 / 5).",
+        "Built VISTA at the Harvard Ophthalmology AI Lab, a vision-audio dataset for VLM benchmarking and fine-tuning, captured on Meta Aria smart glasses.",
+        "Managed and trained a team of annotators and wrote the guidelines for high-quality annotations in Label Studio.",
+        "Designed annotation tools and benchmarking scripts; hosted data via Hugging Face and GitHub.",
       ],
-      table: {
-        caption: "Zero-shot VLM results on VISTA (higher is better)",
-        head: ["Model", "Scene BERT", "Guide BERT", "QA F1", "Scene Judge", "Guide Judge"],
-        rows: [
-          ["BLIP-2", "0.849", "0.833", "0.128", "2.49", "2.01"],
-          ["LLaVA-1.5", "0.861", "0.832", "0.280", "2.59", "2.25"],
-          ["Qwen-VL", "0.830", "0.817", "0.232", "2.79", "3.03"],
-        ],
-      },
+      sections: [
+        {
+          title: "Earlier work: independent research pilot",
+          meta: "ESE 4991 · Presented at WashU ESE Day · Spring 2026",
+          text: "About six months before the ICLR submission, I ran my own pilot of VISTA as independent research. It used an earlier cut of the data and an RGB-only benchmark that I built myself. It's less complete than the final benchmark, but it's where the core finding first showed up: models describe scenes well but struggle to give actionable guidance.",
+          highlights: [
+            { value: "1,003", label: "Raw recordings (~700 annotated)" },
+            { value: "8", label: "Annotators" },
+            { value: "0.90", label: "Inter-annotator BERTScore (QA)" },
+            { value: "3", label: "VLMs benchmarked" },
+          ],
+          bullets: [
+            "Built a custom Label Studio interface for clip- and frame-level annotation: scene descriptions, Q/A pairs, and action goals with instructions.",
+            "Measured inter-annotator agreement on 30 overlapping clips: BERTScore 0.90 (QA) and 0.88 (scene), SBERT 0.63–0.67.",
+            "Wrote an evaluation pipeline in PyTorch + Hugging Face Transformers (8 frames per clip, task-specific prompts), scored with BERTScore, QA F1, and a Qwen-2.5-7B LLM judge.",
+          ],
+          table: {
+            caption: "Pilot zero-shot results (RGB only; not the ICLR submission results)",
+            head: ["Model", "Scene BERT", "Guide BERT", "QA F1", "Scene Judge", "Guide Judge"],
+            rows: [
+              ["BLIP-2", "0.849", "0.833", "0.128", "2.49", "2.01"],
+              ["LLaVA-1.5", "0.861", "0.832", "0.280", "2.59", "2.25"],
+              ["Qwen-VL", "0.830", "0.817", "0.232", "2.79", "3.03"],
+            ],
+          },
+        },
+      ],
       media: [
+        { type: "image", src: "assets/img/vista-task-examples.jpg", fit: "contain", caption: "Example assistive scenarios with scene, Q&A, and action-guidance annotations (ESE Day pilot)" },
         { type: "image", src: "assets/img/vista-aria-sensors.png", fit: "contain", caption: "Meta Project Aria Gen 1 sensor layout (RGB, SLAM & eye-tracking cameras, 7 mics, IMUs, barometer, magnetometer) used for VISTA data collection. Diagram: Meta" },
-        { type: "image", src: "assets/img/vista-pipeline.png", caption: "VISTA pipeline: Aria capture → video/audio/IMU processing → annotation → VLM benchmarking" },
+        { type: "image", src: "assets/img/vista-ese-day-poster.jpg", caption: "My independent-research poster presented at WashU ESE Day (pilot, spring 2026)" },
+        { type: "image", src: "assets/img/vista-pipeline.png", caption: "Pilot pipeline: Aria capture → video/audio/IMU processing → annotation → VLM benchmarking" },
+        { type: "image", src: "assets/img/vista-pilot-similarity-qa.png", caption: "Pilot results: semantic similarity and QA F1 across three VLMs" },
+        { type: "image", src: "assets/img/vista-pilot-llm-judge.png", caption: "Pilot results: LLM-judge usefulness ratings for scene descriptions and guidance" },
+        { type: "image", src: "assets/img/vista-pilot-iaa.png", caption: "Pilot inter-annotator agreement (BERTScore and SBERT)" },
       ],
       links: [],
     },
