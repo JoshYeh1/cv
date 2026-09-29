@@ -83,7 +83,7 @@
     const count = p.media.length > 1 ? `<span class="media-count mono">${p.media.length} media</span>` : "";
     const fit = m.fit === "contain" ? ` class="fit-contain"` : "";
     if (m.type === "image") return `<img src="${esc(m.src)}" alt="${esc(m.caption || p.title)}"${fit} loading="lazy">${count}`;
-    if (m.type === "video") return `<video src="${esc(m.src)}" muted loop playsinline autoplay preload="metadata"></video>${count}`;
+    if (m.type === "video") return `<video src="${esc(m.teaser || m.src)}"${m.poster ? ` poster="${esc(m.poster)}"` : ""} muted loop playsinline autoplay preload="metadata"></video><span class="play-badge" aria-hidden="true">▶</span>${count}`;
     if (m.type === "youtube") return `<img src="https://i.ytimg.com/vi/${esc(m.id)}/hqdefault.jpg" alt="${esc(p.title)}" loading="lazy">${count}`;
     return placeholder(p.icon);
   };
@@ -141,7 +141,7 @@
     const m = list[slide];
     let stage = "";
     if (m.type === "image") stage = `<img src="${esc(m.src)}" alt="${esc(m.caption || p.title)}">`;
-    else if (m.type === "video") stage = `<video src="${esc(m.src)}" controls autoplay playsinline></video>`;
+    else if (m.type === "video") stage = `<video src="${esc(m.src)}"${m.poster ? ` poster="${esc(m.poster)}"` : ""} controls autoplay playsinline></video>`;
     else if (m.type === "youtube") stage = `<iframe src="https://www.youtube-nocookie.com/embed/${esc(m.id)}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
     const nav = list.length > 1
       ? `<button class="gallery-nav prev" data-step="-1" aria-label="Previous">‹</button><button class="gallery-nav next" data-step="1" aria-label="Next">›</button>`
@@ -151,6 +151,7 @@
           .map((t, i) => {
             const inner = t.type === "image" ? `<img src="${esc(t.src)}" alt="">`
               : t.type === "youtube" ? `<img src="https://i.ytimg.com/vi/${esc(t.id)}/default.jpg" alt="">`
+              : t.poster ? `<img src="${esc(t.poster)}" alt=""><span class="thumb-play">▶</span>`
               : `<span class="mono">▶ video</span>`;
             return `<button class="thumb ${i === slide ? "active" : ""}" data-slide="${i}" aria-label="Media ${i + 1}">${inner}</button>`;
           })

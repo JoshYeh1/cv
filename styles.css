@@ -282,7 +282,14 @@ h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; font-weight: 70
 .thumbs { display: flex; gap: 8px; padding: 10px 14px; background: #0a0e13; overflow-x: auto; border-bottom: 1px solid var(--border); }
 .thumb { flex: 0 0 auto; width: 84px; height: 54px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; cursor: pointer; opacity: .6; background: var(--bg-2); display: grid; place-items: center; color: var(--muted); font-size: 11px; }
 .thumb.active { border-color: var(--accent); opacity: 1; }
+.thumb { position: relative; }
 .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb-play { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 14px; background: rgba(0,0,0,.35); }
+.play-badge {
+  position: absolute; left: 12px; bottom: 12px; width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 11px; padding-left: 2px; color: #041318;
+  background: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,.4);
+}
 .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border-strong); background: rgba(0,0,0,.55); color: #fff; font-size: 18px; cursor: pointer; z-index: 2; }
 .gallery-nav.prev { left: 12px; } .gallery-nav.next { right: 12px; }
 .gallery-nav:hover { border-color: var(--accent); color: var(--accent); }

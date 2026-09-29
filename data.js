@@ -5,6 +5,8 @@
    project's `media` array. Supported entries:
      { type: "image",   src: "assets/img/goniometer-1.jpg", caption: "..." }
      { type: "video",   src: "assets/video/demo.mp4",       caption: "..." }
+       (videos can also take poster: "assets/img/frame.jpg" and a short silent
+        teaser: "assets/video/demo-teaser.mp4" that loops on the card cover)
      { type: "youtube", id:  "dQw4w9WgXcQ",                 caption: "..." }
    Add fit: "contain" to an image to show it whole (no cropping) on the card.
    The first entry is used as the card cover. Leave `media: []` to show
@@ -132,9 +134,9 @@ window.SITE = {
         "Developed a PID controller to maintain target speed by adjusting motor PWM signals.",
       ],
       media: [
-        { type: "image", src: "assets/img/robot-timed-run.jpg", caption: "Timed autonomous run" },
-        { type: "image", src: "assets/img/robot-camera-feed.jpg", caption: "Onboard camera feed and servo/pin configuration over SSH" },
-        { type: "image", src: "assets/img/robot-car.jpg", caption: "The Raspberry Pi car in motion" },
+        { type: "video", src: "assets/video/robot-autonomous-run.mp4", teaser: "assets/video/robot-autonomous-run-teaser.mp4", poster: "assets/img/robot-timed-run.jpg", caption: "Timed autonomous run: lane following down the hallway, stopping at an obstacle" },
+        { type: "video", src: "assets/video/robot-camera-feed.mp4", poster: "assets/img/robot-camera-feed.jpg", caption: "Live onboard camera feed and servo/pin configuration streamed over SSH" },
+        { type: "video", src: "assets/video/robot-motor-test.mp4", poster: "assets/img/robot-car.jpg", caption: "Bench test of drive motors and steering servos" },
       ],
       links: [],
     },
