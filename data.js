@@ -6,6 +6,7 @@
      { type: "image",   src: "assets/img/goniometer-1.jpg", caption: "..." }
      { type: "video",   src: "assets/video/demo.mp4",       caption: "..." }
      { type: "youtube", id:  "dQw4w9WgXcQ",                 caption: "..." }
+   Add fit: "contain" to an image to show it whole (no cropping) on the card.
    The first entry is used as the card cover. Leave `media: []` to show
    the generated schematic-style placeholder instead.
    ========================================================================= */
@@ -111,7 +112,9 @@ window.SITE = {
         "Managed and trained a team of annotators and wrote the annotation guidelines in Label Studio.",
         "Designed annotation tools and benchmarking scripts; hosted data via Hugging Face and GitHub.",
       ],
-      media: [],
+      media: [
+        { type: "image", src: "assets/img/vista-aria-sensors.png", fit: "contain", caption: "Meta Project Aria Gen 1 sensor layout (RGB, SLAM & eye-tracking cameras, 7 mics, IMUs, barometer, magnetometer) used for VISTA data collection. Diagram: Meta" },
+      ],
       links: [],
     },
     {

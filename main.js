@@ -81,7 +81,8 @@
     const m = p.media[0];
     if (!m) return placeholder(p.icon);
     const count = p.media.length > 1 ? `<span class="media-count mono">${p.media.length} media</span>` : "";
-    if (m.type === "image") return `<img src="${esc(m.src)}" alt="${esc(m.caption || p.title)}" loading="lazy">${count}`;
+    const fit = m.fit === "contain" ? ` class="fit-contain"` : "";
+    if (m.type === "image") return `<img src="${esc(m.src)}" alt="${esc(m.caption || p.title)}"${fit} loading="lazy">${count}`;
     if (m.type === "video") return `<video src="${esc(m.src)}" muted loop playsinline autoplay preload="metadata"></video>${count}`;
     if (m.type === "youtube") return `<img src="https://i.ytimg.com/vi/${esc(m.id)}/hqdefault.jpg" alt="${esc(p.title)}" loading="lazy">${count}`;
     return placeholder(p.icon);
