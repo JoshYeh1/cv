@@ -9,7 +9,8 @@
         teaser: "assets/video/demo-teaser.mp4" that loops on the card cover)
      { type: "youtube", id:  "dQw4w9WgXcQ",                 caption: "..." }
    Add fit: "contain" to an image to show it whole (no cropping) on the card,
-   or fit: "top" to crop from the top instead of the center.
+   or fit: "top" to crop from the top instead of the center, or
+   focus: "50% 30%" to choose exactly which point of the image the crop centers on.
    The first entry is used as the card cover. Leave `media: []` to show
    the generated schematic-style placeholder instead.
    ========================================================================= */
@@ -60,6 +61,7 @@ window.SITE = {
         "Did most of the design of the Hall Amp V2 PCB, a differential-amplifier board that conditions 3-axis Hall-sensor signals for closed-loop orientation sensing.",
       ],
       media: [
+        { type: "image", src: "assets/img/gonio-full-setup.jpg", focus: "50% 38%", caption: "Full test setup: belt-driven goniometer between the magnet coils, Hall-sensor signal chain on the breadboard, and bench DMM and power supply" },
         { type: "image", src: "assets/img/gonio-motor-housings.jpg", caption: "Stepper motors in 3D-printed housings on the strut frame, belt-coupled to the stage below" },
         { type: "image", src: "assets/img/gonio-stage.jpg", caption: "3D-printed two-axis goniometer stage with bevel gearbox" },
         { type: "image", src: "assets/img/gonio-belt-upgrade.jpg", caption: "Prototype revision: Kevlar strings and springs replaced with bearings and belts to stop slippage" },
@@ -203,12 +205,13 @@ window.SITE = {
       bullets: [
         "Designed the control system for a Raspberry Pi car with integrated sensors and actuators for autonomous driving.",
         "Coded vision-based navigation using a camera to detect obstacles and make real-time directional adjustments.",
+        "Implemented color tracking that locks onto blue targets and steers the camera and wheel servos toward them.",
         "Developed a PID controller to maintain target speed by adjusting motor PWM signals.",
       ],
       media: [
         { type: "video", src: "assets/video/robot-autonomous-run.mp4", teaser: "assets/video/robot-autonomous-run-teaser.mp4", poster: "assets/img/robot-timed-run.jpg", caption: "Timed autonomous run: lane following down the hallway, stopping at an obstacle" },
-        { type: "video", src: "assets/video/robot-camera-feed.mp4", poster: "assets/img/robot-camera-feed.jpg", caption: "Live onboard camera feed and servo/pin configuration streamed over SSH" },
-        { type: "video", src: "assets/video/robot-motor-test.mp4", poster: "assets/img/robot-car.jpg", caption: "Bench test of drive motors and steering servos" },
+        { type: "video", src: "assets/video/robot-camera-feed.mp4", poster: "assets/img/robot-camera-feed.jpg", caption: "Onboard camera view during color tracking: picking out the blue bin and blue tape lane, with servo/pin configuration streamed over SSH" },
+        { type: "video", src: "assets/video/robot-motor-test.mp4", poster: "assets/img/robot-car.jpg", caption: "Color tracking: the camera and steering servos turn to follow a blue object" },
       ],
       links: [],
     },

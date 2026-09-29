@@ -79,7 +79,8 @@
     if (!m) return placeholder(p.icon);
     const count = p.media.length > 1 ? `<span class="media-count">+${p.media.length - 1}</span>` : "";
     const fit = m.fit === "contain" ? ` class="fit-contain"` : m.fit === "top" ? ` class="fit-top"` : "";
-    if (m.type === "image") return `<img src="${esc(m.src)}" alt="${esc(m.caption || p.title)}"${fit} loading="lazy">${count}`;
+    const focus = m.focus ? ` style="object-position:${esc(m.focus)}"` : "";
+    if (m.type === "image") return `<img src="${esc(m.src)}" alt="${esc(m.caption || p.title)}"${fit}${focus} loading="lazy">${count}`;
     if (m.type === "video") return `<video src="${esc(m.teaser || m.src)}"${m.poster ? ` poster="${esc(m.poster)}"` : ""} muted loop playsinline autoplay preload="metadata"></video><span class="play-badge" aria-hidden="true">▶</span>${count}`;
     if (m.type === "youtube") return `<img src="https://i.ytimg.com/vi/${esc(m.id)}/hqdefault.jpg" alt="${esc(p.title)}" loading="lazy">${count}`;
     return placeholder(p.icon);
@@ -228,6 +229,21 @@
     if (e.key === "ArrowRight") step(1);
     if (e.key === "ArrowLeft") step(-1);
   });
+
+  /* ---------- design picker (temporary: remove once a design is chosen) ---------- */
+  const THEMES = [["clean", "Clean"], ["graphite", "Graphite"], ["blueprint", "Blueprint"], ["notebook", "Lab Notebook"]];
+  const setTheme = (t) => {
+    if (t === "clean") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", t);
+    localStorage.setItem("theme", t);
+    picker.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.pick === t));
+  };
+  const picker = document.createElement("div");
+  picker.className = "theme-picker";
+  picker.innerHTML = THEMES.map(([id, label]) => `<button data-pick="${id}">${label}</button>`).join("");
+  picker.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) setTheme(b.dataset.pick); });
+  document.body.appendChild(picker);
+  setTheme(new URLSearchParams(location.search).get("theme") || localStorage.getItem("theme") || "clean");
 
   /* ---------- nav + reveal ---------- */
   const nav = $("#nav");
