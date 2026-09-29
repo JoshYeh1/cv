@@ -77,7 +77,7 @@
   const cover = (p) => {
     const m = p.media[0];
     if (!m) return placeholder(p.icon);
-    const count = p.media.length > 1 ? `<span class="media-count mono">${p.media.length} media</span>` : "";
+    const count = p.media.length > 1 ? `<span class="media-count">+${p.media.length - 1}</span>` : "";
     const fit = m.fit === "contain" ? ` class="fit-contain"` : m.fit === "top" ? ` class="fit-top"` : "";
     if (m.type === "image") return `<img src="${esc(m.src)}" alt="${esc(m.caption || p.title)}"${fit} loading="lazy">${count}`;
     if (m.type === "video") return `<video src="${esc(m.teaser || m.src)}"${m.poster ? ` poster="${esc(m.poster)}"` : ""} muted loop playsinline autoplay preload="metadata"></video><span class="play-badge" aria-hidden="true">▶</span>${count}`;
@@ -91,11 +91,11 @@
     <article class="project-card reveal${p.featured ? " featured" : ""}" tabindex="0" data-index="${i}">
       <div class="project-cover">${cover(p)}</div>
       <div class="project-info">
-        <div class="project-meta mono"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
+        <div class="project-meta"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
         <h3>${esc(p.title)}</h3>
         <p>${esc(p.summary)}</p>
         ${tags(p.tags)}
-        <span class="project-more mono">Details <span>→</span></span>
+        <span class="project-more">View project <span>→</span></span>
       </div>
     </article>`
     )
@@ -106,10 +106,10 @@
     .map(
       (e) => `
     <li class="tl-item reveal"><div class="tl-card">
-      <div class="tl-head"><h3>${esc(e.role)}</h3><span class="tl-date mono">${esc(e.date)}</span></div>
+      <div class="tl-head"><h3>${esc(e.role)}</h3><span class="tl-date">${esc(e.date)}</span></div>
       <div class="tl-org">${esc(e.org)}</div>
       <ul>${e.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
-      ${e.links ? `<div class="tl-links">${e.links.map((l) => `<a class="mono" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
+      ${e.links ? `<div class="tl-links">${e.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
     </div></li>`
     )
     .join("");
@@ -121,7 +121,7 @@
   $("#edu").innerHTML = S.education
     .map(
       (e) => `<div class="edu-card reveal"><h3>${esc(e.school)}</h3>
-      <span class="tl-date mono">${esc(e.date)} · ${esc(e.place)}</span>
+      <span class="tl-date">${esc(e.date)} · ${esc(e.place)}</span>
       ${e.degrees.map((d) => `<p>${esc(d)}</p>`).join("")}</div>`
     )
     .join("");
@@ -149,12 +149,12 @@
             const inner = t.type === "image" ? `<img src="${esc(t.src)}" alt="">`
               : t.type === "youtube" ? `<img src="https://i.ytimg.com/vi/${esc(t.id)}/default.jpg" alt="">`
               : t.poster ? `<img src="${esc(t.poster)}" alt=""><span class="thumb-play">▶</span>`
-              : `<span class="mono">▶ video</span>`;
+              : `<span>▶ video</span>`;
             return `<button class="thumb ${i === slide ? "active" : ""}" data-slide="${i}" aria-label="Media ${i + 1}">${inner}</button>`;
           })
           .join("")}</div>`
       : "";
-    mediaEl.innerHTML = `<div style="position:relative"><div class="stage">${stage}</div>${nav}${m.caption ? `<div class="caption">${esc(m.caption)}</div>` : ""}</div>${thumbs}`;
+    mediaEl.innerHTML = `<div style="position:relative"><div class="stage">${stage}</div>${nav}</div>${m.caption ? `<div class="caption">${esc(m.caption)}</div>` : ""}${thumbs}`;
   };
 
   // highlights → bullets → table; shared by the project body and its sub-sections
@@ -162,7 +162,7 @@
       ${d.highlights ? `<div class="highlights">${d.highlights.map((h) => `<div class="hl"><div class="hl-value">${esc(h.value)}</div><div class="hl-label">${esc(h.label)}</div></div>`).join("")}</div>` : ""}
       ${d.bullets ? `<ul>${d.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>` : ""}
       ${d.table ? `<div class="table-wrap"><table>
-        <caption class="mono">${esc(d.table.caption)}</caption>
+        <caption>${esc(d.table.caption)}</caption>
         <thead><tr>${d.table.head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead>
         <tbody>${d.table.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
       </table></div>` : ""}`;
@@ -174,14 +174,14 @@
     renderSlide();
     const p = current;
     bodyEl.innerHTML = `
-      <div class="project-meta mono"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
+      <div class="project-meta"><span class="sub">${esc(p.subtitle)}</span><span>${esc(p.date)}</span></div>
       <h3>${esc(p.title)}</h3>
       <p class="lead">${esc(p.description || p.summary)}</p>
       ${detail(p)}
       ${(p.sections || []).map((sec) => `
         <section class="sub-section">
           <h4>${esc(sec.title)}</h4>
-          ${sec.meta ? `<div class="sub-meta mono">${esc(sec.meta)}</div>` : ""}
+          ${sec.meta ? `<div class="sub-meta">${esc(sec.meta)}</div>` : ""}
           ${sec.text ? `<p>${esc(sec.text)}</p>` : ""}
           ${detail(sec)}
         </section>`).join("")}
