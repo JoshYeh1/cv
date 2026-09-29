@@ -25,6 +25,7 @@ window.UI = (() => {
     scope: '<rect x="2.5" y="4" width="19" height="14" rx="2"/><path d="M5.5 11c1.2-4 2.4-4 3.6 0s2.4 4 3.6 0 2.4-4 3.6 0 1.2 2 2.2 2"/><path d="M8 21h8"/>',
     gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1M18.7 18.7l-2.1-2.1M7.4 7.4 5.3 5.3"/><circle cx="12" cy="12" r="6.5"/>',
     code: '<path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/>',
+    check: '<rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="m8 12.5 2.8 2.8L16.5 9"/>',
     network: '<circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><path d="M7 6.8 10.2 11M7 17.2l3.2-4.2M14 12h3"/>',
   };
   const skillIcon = (name) =>

@@ -3,9 +3,9 @@
   const { $, esc, placeholder, skillIcon, orgMark, tags, socialLinks } = window.UI;
 
   /* ---------- hero / static ---------- */
-  document.title = `${S.name} — ${S.role}`;
+  document.title = `${S.name} · Electrical Engineer`;
   $("#hero-name").textContent = S.name;
-  $("#hero-role").textContent = S.role;
+  $("#hero-role").innerHTML = `${esc(S.role)}${S.focus ? `<span class="hero-focus">${esc(S.focus)}</span>` : ""}`;
   $("#hero-tagline").textContent = S.tagline;
   ["#nav-resume", "#hero-resume"].forEach((id) => ($(id).href = S.resume));
   $("#year").textContent = new Date().getFullYear();

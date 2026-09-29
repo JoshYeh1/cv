@@ -89,14 +89,28 @@
       </div>
 
       <div class="pp-cols reveal">
-        <section class="pp-block">
-          <div class="pp-block-head"><h2>Overview</h2></div>
-          <p class="pp-text">${esc(p.description || p.summary)}</p>
-        </section>
-        <section class="pp-block">
-          <div class="pp-block-head"><h2>What I did</h2></div>
-          ${bullets(p.bullets)}
-        </section>
+        <div>
+          <section class="pp-block">
+            <div class="pp-block-head"><h2>The problem</h2></div>
+            <p class="pp-text">${esc(p.problem || p.summary)}</p>
+          </section>
+          ${p.role ? `
+          <section class="pp-block">
+            <div class="pp-block-head"><h2>My role</h2></div>
+            <p class="pp-text">${esc(p.role)}</p>
+          </section>` : ""}
+        </div>
+        <div>
+          <section class="pp-block">
+            <div class="pp-block-head"><h2>What I built</h2></div>
+            ${bullets(p.built)}
+          </section>
+          ${p.validation ? `
+          <section class="pp-block">
+            <div class="pp-block-head"><h2>Testing &amp; validation</h2></div>
+            ${bullets(p.validation)}
+          </section>` : ""}
+        </div>
       </div>
       ${table(p.table)}
 
