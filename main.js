@@ -26,6 +26,17 @@
   mail.href = `mailto:${S.email}`;
   mail.textContent = S.email;
 
+  $("#stats").innerHTML = S.stats
+    .map((s) => {
+      const p = S.projects.find((x) => x.id === s.project);
+      return `<a class="stat" href="project.html?id=${esc(s.project)}">
+        <div class="stat-value">${esc(s.value)}</div>
+        <div class="stat-label">${esc(s.label)}</div>
+        ${p ? `<div class="stat-link">${esc(p.title)} →</div>` : ""}
+      </a>`;
+    })
+    .join("");
+
   $("#about-body").innerHTML = S.about.map((p) => `<p>${esc(p)}</p>`).join("");
 
   /* ---------- projects ---------- */

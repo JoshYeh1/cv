@@ -29,6 +29,7 @@
 .media-count,
 .pp-back,
 .pp-pager span,
+.stat-link,
 #lb-count { font-family: var(--mono); letter-spacing: 0; }
 .project-meta, .tl-date { font-size: 12.5px; }
 .eyebrow { font-size: 12.5px; background: transparent; border: 1px dashed var(--accent); border-radius: 6px; }
@@ -54,7 +55,7 @@ main { counter-reset: sec; }
 
 /* Sharper corners and "printed" offset shadows */
 .photo-frame { border-radius: 6px; box-shadow: 8px 8px 0 var(--surface-2), 8px 8px 0 1px var(--border-strong); }
-.project-card, .skill-group, .edu-card, .contact-card, .pp-hero, .pp-pager a, .table-wrap { border-radius: 8px; }
+.project-card, .skill-group, .edu-card, .contact-card, .pp-hero, .pp-pager a, .table-wrap, .stats { border-radius: 8px; }
 .pp-tile-media, .hl { border-radius: 6px; }
 .btn { border-radius: 6px; }
 .project-card:hover { border-color: var(--text); box-shadow: 5px 5px 0 var(--border-strong); transform: translate(-2px, -2px); }
@@ -64,3 +65,8 @@ main { counter-reset: sec; }
 /* Section headings already have an underline, so drop the list's top border */
 .timeline { border-top: 0; }
 .tl-item:first-child .tl-card { padding-top: 8px; }
+
+/* Headline stats: printed-card look with an orange rule on hover */
+.stats { box-shadow: 6px 6px 0 var(--surface-2), 6px 6px 0 1px var(--border-strong); }
+.stat { border-top: 3px solid transparent; }
+.stat:hover { border-top-color: var(--accent); }

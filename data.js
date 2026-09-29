@@ -33,6 +33,14 @@ window.SITE = {
   ],
 
 
+  // Headline numbers under the hero; each links to its project page
+  stats: [
+    { value: "±1°", label: "Repeatable positioning on a cryogenic goniometer", project: "goniometer" },
+    { value: "997", label: "Multimodal samples in a benchmark under review at ICLR 2027", project: "vista" },
+    { value: "Class 100", label: "Cleanroom fabrication of silicon photodiodes", project: "photodiode" },
+    { value: "<1 s", label: "AI scene descriptions on AR glasses, 40% faster", project: "aria" },
+  ],
+
   projects: [
     {
       id: "goniometer",
