@@ -231,7 +231,7 @@ window.SITE = {
         { type: "image", src: "assets/img/robot-step-half-kp.png", caption: "Gain study: ½ Kp with Ki = 0 (slower rise, more steady-state error)" },
         { type: "image", src: "assets/img/robot-step-10x-kp.png", caption: "Gain study: 10× Kp with Ki = 0 (faster rise, large overshoot)" },
       ],
-      links: [],
+      links: [{ label: "Read the full report (PDF)", url: "assets/papers/Yeh_Wu_Autonomous_Robot_Car_Report.pdf" }],
     },
   ],
 
